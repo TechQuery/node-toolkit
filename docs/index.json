@@ -1,0 +1,1158 @@
+[
+  {
+    "__docId__": 1,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~Infinity",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 2,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~NaN",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 3,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~undefined",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 4,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~null",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 5,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~Object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 6,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 7,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~Function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 8,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 9,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~Boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 10,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 11,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~Symbol",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 12,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~Error",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 13,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~EvalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 14,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~InternalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 15,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~RangeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 16,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~ReferenceError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 17,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~SyntaxError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 18,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~TypeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 19,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~URIError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 20,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~Number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 21,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 22,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~Date",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 23,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~String",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 24,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~string",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 25,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~RegExp",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 26,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 27,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~Int8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~Uint8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~Uint8ClampedArray",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~Int16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~Uint16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~Int32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~Uint32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~Float32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~Float64Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~Map",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~Set",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~WeakMap",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~WeakSet",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~ArrayBuffer",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~DataView",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~JSON",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~Promise",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~Generator",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~GeneratorFunction",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~Reflect",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "source/.external-ecmascript.js",
+    "static": true,
+    "longname": "source/.external-ecmascript.js~Proxy",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 49,
+    "kind": "external",
+    "name": "http~ClientRequest",
+    "externalLink": "https://nodejs.org/dist/latest/docs/api/http.html#http_class_http_clientrequest",
+    "memberof": "source/.external-nodejs.js",
+    "static": true,
+    "longname": "source/.external-nodejs.js~http~ClientRequest",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 50,
+    "kind": "file",
+    "name": "source/index.js",
+    "content": "export * from './module';\n\nexport * from './network';\n",
+    "static": true,
+    "longname": "D:/TechQuery/node-toolkit/source/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 51,
+    "kind": "file",
+    "name": "source/language.js",
+    "content": "import { transform } from '@babel/core';\n\n\n/**\n * @param {string} raw - RegExp literal string\n *\n * @return {?RegExp}\n */\nexport function toRegExp(raw) {\n\n    const match = raw.match( /^\\/?(.+?)(?:\\/([a-z]+)?)?$/ );\n\n    if ( match )  return  new RegExp(match[1], match[2]);\n}\n\n\n/**\n * @param {string}  code         - ES 6+ source code\n * @param {?string} fileName     - Full name of this JS file\n * @param {boolean} [onlyModule] - Only transform ES 6 module to CommonJS\n *\n * @return {string} ES 5 source code\n */\nexport function toES_5(code, fileName, onlyModule) {\n\n    const option = {\n        plugins:   ['@babel/plugin-transform-modules-commonjs'],\n        ast:       false,\n        filename:  fileName || undefined\n    };\n\n    if (! onlyModule)  option.presets = ['@babel/preset-env'];\n\n    return  transform(code, option).code.replace(\n        /^(?:'|\")use strict(?:'|\");\\n+/,  ''\n    );\n}\n",
+    "static": true,
+    "longname": "D:/TechQuery/node-toolkit/source/language.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 52,
+    "kind": "function",
+    "name": "toRegExp",
+    "memberof": "source/language.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "source/language.js~toRegExp",
+    "access": "public",
+    "export": true,
+    "importPath": "@tech_query/node-toolkit/source/language.js",
+    "importStyle": "{toRegExp}",
+    "description": "",
+    "lineNumber": 9,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "raw",
+        "description": "RegExp literal string"
+      }
+    ],
+    "return": {
+      "nullable": true,
+      "types": [
+        "RegExp"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 53,
+    "kind": "function",
+    "name": "toES_5",
+    "memberof": "source/language.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "source/language.js~toES_5",
+    "access": "public",
+    "export": true,
+    "importPath": "@tech_query/node-toolkit/source/language.js",
+    "importStyle": "{toES_5}",
+    "description": "",
+    "lineNumber": 24,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "code",
+        "description": "ES 6+ source code"
+      },
+      {
+        "nullable": true,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "fileName",
+        "description": "Full name of this JS file"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "onlyModule",
+        "description": "Only transform ES 6 module to CommonJS"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": "ES 5 source code"
+    }
+  },
+  {
+    "__docId__": 54,
+    "kind": "file",
+    "name": "source/module.js",
+    "content": "import { readFileSync } from 'fs';\n\nimport { toRegExp } from './language';\n\nimport { execSync } from 'child_process';\n\n\n/**\n * Get configuration of a Package from `package.json` or `${name}.json` in `process.cwd()`\n *\n * @param {string} name\n *\n * @return {?Object} (`process.env.NODE_ENV` will affect the result)\n */\nexport function configOf(name) {\n\n    var config = JSON.parse( readFileSync('./package.json') )[ name ];\n\n    config = config  ||  JSON.parse( readFileSync(`./${name}.json`) );\n\n    if ( config )\n        return  config.env  ?  config.env[ process.env.NODE_ENV ]  :  config;\n}\n\n\n/**\n * @param {Object} map - Key for RegExp source, value for replacement\n *\n * @return {?Object} Key for replacement, value for RegExp\n */\nexport function patternOf(map) {\n\n    var patternMap = { }, count = 0;\n\n    for (let pattern in map)\n        patternMap[ map[ pattern ] ] = toRegExp( pattern ),  count++;\n\n    return  count ? patternMap : null;\n}\n\n\n/**\n * @return {string}\n */\nexport function currentModulePath() {\n\n    try {  throw Error();  } catch (error) {\n\n        return  error.stack.split( /[\\r\\n]+/ )[2]\n            .match( /at .+?\\((.+):\\d+:\\d+\\)/ )[1].replace(/\\\\/g, '/');\n    }\n}\n\n/**\n * @param {string} key\n *\n * @return {?*}\n */\nexport function getNPMConfig(key) {\n\n    const value = (execSync(`npm get ${key}`) + '').trim();\n\n    if (value !== 'undefined')\n        try {\n            return  JSON.parse( value );\n\n        } catch (error) {  return value;  }\n}\n\n\n/**\n * @param {string} key\n * @param {?*}     value\n */\nexport function setNPMConfig(key, value) {\n\n    execSync(\n        (value != null)  ?\n            `npm set ${key} ${value}`  :  `npm config delete ${key}`\n    );\n\n    console.info(`${key} = ${value}`);\n}\n",
+    "static": true,
+    "longname": "D:/TechQuery/node-toolkit/source/module.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 55,
+    "kind": "function",
+    "name": "configOf",
+    "memberof": "source/module.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "source/module.js~configOf",
+    "access": "public",
+    "export": true,
+    "importPath": "@tech_query/node-toolkit/source/module.js",
+    "importStyle": "{configOf}",
+    "description": "Get configuration of a Package from `package.json` or `${name}.json` in `process.cwd()`",
+    "lineNumber": 15,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "name",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": true,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": "(`process.env.NODE_ENV` will affect the result)"
+    }
+  },
+  {
+    "__docId__": 56,
+    "kind": "function",
+    "name": "patternOf",
+    "memberof": "source/module.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "source/module.js~patternOf",
+    "access": "public",
+    "export": true,
+    "importPath": "@tech_query/node-toolkit/source/module.js",
+    "importStyle": "{patternOf}",
+    "description": "",
+    "lineNumber": 31,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "map",
+        "description": "Key for RegExp source, value for replacement"
+      }
+    ],
+    "return": {
+      "nullable": true,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": "Key for replacement, value for RegExp"
+    }
+  },
+  {
+    "__docId__": 57,
+    "kind": "function",
+    "name": "currentModulePath",
+    "memberof": "source/module.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "source/module.js~currentModulePath",
+    "access": "public",
+    "export": true,
+    "importPath": "@tech_query/node-toolkit/source/module.js",
+    "importStyle": "{currentModulePath}",
+    "description": "",
+    "lineNumber": 45,
+    "return": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "params": []
+  },
+  {
+    "__docId__": 58,
+    "kind": "function",
+    "name": "getNPMConfig",
+    "memberof": "source/module.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "source/module.js~getNPMConfig",
+    "access": "public",
+    "export": true,
+    "importPath": "@tech_query/node-toolkit/source/module.js",
+    "importStyle": "{getNPMConfig}",
+    "description": "",
+    "lineNumber": 59,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "key",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": true,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 59,
+    "kind": "function",
+    "name": "setNPMConfig",
+    "memberof": "source/module.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "source/module.js~setNPMConfig",
+    "access": "public",
+    "export": true,
+    "importPath": "@tech_query/node-toolkit/source/module.js",
+    "importStyle": "{setNPMConfig}",
+    "description": "",
+    "lineNumber": 75,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "key",
+        "description": ""
+      },
+      {
+        "nullable": true,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": ""
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 60,
+    "kind": "file",
+    "name": "source/network.js",
+    "content": "import { parse } from 'url';\n\n\n/**\n * HTTP(S) request\n *\n * @param {string|URL}           URL\n * @param {string}               [method='GET']\n * @param {Object}               [header]\n * @param {string|Object|Buffer} [body]\n *\n * @return {IncomingMessage} HTTP(S) response\n */\nexport  async function request(URL,  method = 'GET',  header,  body) {\n\n    if (typeof URL === 'string')  URL = parse( URL );\n\n    const option = {\n            method,\n            headers:  Object.assign({\n                Accept:        '*/*',\n                'User-Agent':  `Node.JS ${process.version}`\n            }, header)\n        },\n        client = (await import( URL.protocol.slice(0, -1) )).request;\n\n    if ((body instanceof Object)  &&  !(body instanceof Buffer)) {\n\n        option.headers['Content-Type'] = 'application/json';\n\n        body = JSON.stringify( body );\n    }\n\n    for (let key in URL)\n        if (URL[ key ]  &&  !(URL[key] instanceof Function))\n            option[key] = URL[key];\n\n    return  await new Promise((resolve, reject) =>\n        client(option, resolve).on('error', reject).end( body )\n    );\n}\n",
+    "static": true,
+    "longname": "D:/TechQuery/node-toolkit/source/network.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 61,
+    "kind": "function",
+    "name": "request",
+    "memberof": "source/network.js",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "source/network.js~request",
+    "access": "public",
+    "export": true,
+    "importPath": "@tech_query/node-toolkit/source/network.js",
+    "importStyle": "{request}",
+    "description": "HTTP(S) request",
+    "lineNumber": 14,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string",
+          "URL"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "URL",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "'GET'",
+        "defaultRaw": "'GET'",
+        "name": "method",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "header",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string",
+          "Object",
+          "Buffer"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "body",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "IncomingMessage"
+      ],
+      "spread": false,
+      "description": "HTTP(S) response"
+    }
+  },
+  {
+    "kind": "index",
+    "content": "# Node.JS toolkit\n\nToolkit for [Node.JS packages](https://docs.npmjs.com/getting-started/packages)\n\n[![NPM Dependency](https://david-dm.org/TechQuery/node-toolkit.svg)](https://david-dm.org/TechQuery/node-toolkit)\n\n[![NPM](https://nodei.co/npm/@tech_query/node-toolkit.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/@tech_query/node-toolkit/)\n\n\n\n## Utility methods\n\n - [Usage example](https://techquery.github.io/node-toolkit/test.html)\n\n - [API document](https://techquery.github.io/node-toolkit/identifiers.html)\n",
+    "longname": "D:\\TechQuery\\node-toolkit\\README.md",
+    "name": "./README.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "packageJSON",
+    "content": "{\r\n  \"name\": \"@tech_query/node-toolkit\",\r\n  \"version\": \"0.4.0\",\r\n  \"description\": \"Toolkit for Node.JS packages\",\r\n  \"keywords\": [\r\n    \"toolkit\",\r\n    \"toolbox\",\r\n    \"utility\",\r\n    \"node\",\r\n    \"package\",\r\n    \"library\",\r\n    \"module\"\r\n  ],\r\n  \"author\": \"shiy2008@gmail.com\",\r\n  \"license\": \"LGPL-3.0\",\r\n  \"homepage\": \"https://techquery.github.io/node-toolkit/\",\r\n  \"repository\": {\r\n    \"type\": \"git\",\r\n    \"url\": \"git+https://github.com/TechQuery/node-toolkit.git\"\r\n  },\r\n  \"bugs\": {\r\n    \"url\": \"https://github.com/TechQuery/node-toolkit/issues\"\r\n  },\r\n  \"main\": \"dist/index.js\",\r\n  \"module\": \"source/index.js\",\r\n  \"engines\": {\r\n    \"node\": \"^5.12.0\"\r\n  },\r\n  \"scripts\": {\r\n    \"lint\": \"eslint source/ test/ --fix\",\r\n    \"bundle\": \"babel source/ -d dist/\",\r\n    \"test\": \"mocha --exit\",\r\n    \"debug\": \"mocha --inspect-brk\",\r\n    \"build\": \"npm run lint  &&  npm run bundle  &&  npm test\",\r\n    \"prepublishOnly\": \"npm run build\",\r\n    \"precommit\": \"npm run build  &&  esdoc  &&  git add .\",\r\n    \"start\": \"opn docs/\"\r\n  },\r\n  \"dependencies\": {\r\n    \"@babel/core\": \"^7.0.0\",\r\n    \"@babel/polyfill\": \"^7.0.0\",\r\n    \"@babel/runtime\": \"^7.0.0\"\r\n  },\r\n  \"devDependencies\": {\r\n    \"@babel/cli\": \"^7.0.0\",\r\n    \"@babel/plugin-transform-runtime\": \"^7.0.0\",\r\n    \"@babel/preset-env\": \"^7.0.0\",\r\n    \"@babel/register\": \"^7.0.0\",\r\n    \"babel-eslint\": \"^9.0.0\",\r\n    \"babel-plugin-dynamic-import-node\": \"^2.1.0\",\r\n    \"esdoc\": \"^1.1.0\",\r\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\r\n    \"esdoc-external-nodejs-plugin\": \"^1.0.0\",\r\n    \"esdoc-standard-plugin\": \"^1.0.0\",\r\n    \"eslint\": \"^5.5.0\",\r\n    \"husky\": \"^0.14.3\",\r\n    \"mocha\": \"^5.2.0\",\r\n    \"opn-cli\": \"^3.1.0\",\r\n    \"should\": \"^13.2.3\",\r\n    \"should-http\": \"^0.1.1\"\r\n  },\r\n  \"babel\": {\r\n    \"presets\": [\r\n      \"@babel/preset-env\"\r\n    ],\r\n    \"plugins\": [\r\n      \"@babel/plugin-transform-runtime\",\r\n      \"dynamic-import-node\"\r\n    ]\r\n  },\r\n  \"test\": {\r\n    \"env\": {\r\n      \"development\": {\r\n        \"example\": {\r\n          \"^test$\": \"example\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}\r\n",
+    "longname": "D:\\TechQuery\\node-toolkit\\package.json",
+    "name": "package.json",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "__docId__": 62,
+    "kind": "testFile",
+    "name": "test/language.js",
+    "content": "import { toRegExp, toES_5 } from '../source/language';\n\n\ndescribe('JS language utility',  () => {\n    /**\n     * @test {toRegExp}\n     */\n    it('Create RegExp() from a literal string',  () => {\n\n        toRegExp('/test|example\\\\//ig').should.be.eql( /test|example\\//gi );\n\n        toRegExp('/^test$/').should.be.eql( /^test$/ );\n\n        toRegExp('test').should.be.eql( /test/ );\n    });\n\n    /**\n     * @test {toES_5}\n     */\n    it('Transform ES 6+ module',  () => {\n\n        toES_5(`\nimport '@babel/polyfill';\n\nasync function test() { }\n\n`, null, true).should.be.equal(`\n\nrequire(\"@babel/polyfill\");\n\nasync function test() {}`.trim());\n    });\n});\n",
+    "static": true,
+    "longname": "D:/TechQuery/node-toolkit/test/language.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 63,
+    "kind": "test",
+    "name": "describe0",
+    "testId": 0,
+    "memberof": "test/language.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "test/language.js~describe0",
+    "access": null,
+    "description": "JS language utility",
+    "lineNumber": 4
+  },
+  {
+    "__docId__": 64,
+    "kind": "test",
+    "name": "it1",
+    "testId": 1,
+    "memberof": "test/language.js~describe0",
+    "testDepth": 1,
+    "static": true,
+    "longname": "test/language.js~describe0.it1",
+    "access": null,
+    "description": "Create RegExp() from a literal string",
+    "lineNumber": 8,
+    "testTargets": [
+      "toRegExp"
+    ]
+  },
+  {
+    "__docId__": 65,
+    "kind": "test",
+    "name": "it2",
+    "testId": 2,
+    "memberof": "test/language.js~describe0",
+    "testDepth": 1,
+    "static": true,
+    "longname": "test/language.js~describe0.it2",
+    "access": null,
+    "description": "Transform ES 6+ module",
+    "lineNumber": 20,
+    "testTargets": [
+      "toES_5"
+    ]
+  },
+  {
+    "__docId__": 66,
+    "kind": "testFile",
+    "name": "test/module.js",
+    "content": "import {\n    configOf, patternOf, currentModulePath, setNPMConfig, getNPMConfig\n} from '../source/module';\n\n\ndescribe('Meta information of modules',  () => {\n\n    var config;\n    /**\n     * @test {configOf}\n     */\n    it('Get configuration from \"package.json\"',  () => {\n\n        process.env.NODE_ENV = 'development';\n\n        config = configOf('test');\n\n        config.should.be.eql({\n            example:  {'^test$': 'example'}\n        });\n    });\n\n    /**\n     * @test {patternOf}\n     */\n    it(\n        'Map String config to RegExp edition',\n        ()  =>  patternOf( config.example ).should.be.eql({\n            example:  /^test$/\n        })\n    );\n\n    /**\n     * @test {currentModulePath}\n     */\n    it(\n        'Get path of current module',\n        ()  =>  currentModulePath().should.match( /^(\\w:)?\\/.+\\/test\\/module\\.js$/ )\n    );\n\n    /**\n     * @test {setNPMConfig}\n     * @test {getNPMConfig}\n     */\n    it('Get or set NPM config',  () => {\n\n        setNPMConfig('test_example', 'sample');\n\n        getNPMConfig('test_example').should.be.equal('sample');\n\n        setNPMConfig('test_example', true);\n\n        getNPMConfig('test_example').should.be.true();\n\n        setNPMConfig('test_example', null);\n\n        (getNPMConfig('test_example') === undefined).should.be.true();\n    });\n});\n",
+    "static": true,
+    "longname": "D:/TechQuery/node-toolkit/test/module.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 67,
+    "kind": "test",
+    "name": "describe3",
+    "testId": 3,
+    "memberof": "test/module.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "test/module.js~describe3",
+    "access": null,
+    "description": "Meta information of modules",
+    "lineNumber": 6
+  },
+  {
+    "__docId__": 68,
+    "kind": "test",
+    "name": "it4",
+    "testId": 4,
+    "memberof": "test/module.js~describe3",
+    "testDepth": 1,
+    "static": true,
+    "longname": "test/module.js~describe3.it4",
+    "access": null,
+    "description": "Get configuration from \"package.json\"",
+    "lineNumber": 12,
+    "testTargets": [
+      "configOf"
+    ]
+  },
+  {
+    "__docId__": 69,
+    "kind": "test",
+    "name": "it5",
+    "testId": 5,
+    "memberof": "test/module.js~describe3",
+    "testDepth": 1,
+    "static": true,
+    "longname": "test/module.js~describe3.it5",
+    "access": null,
+    "description": "Map String config to RegExp edition",
+    "lineNumber": 26,
+    "testTargets": [
+      "patternOf"
+    ]
+  },
+  {
+    "__docId__": 70,
+    "kind": "test",
+    "name": "it6",
+    "testId": 6,
+    "memberof": "test/module.js~describe3",
+    "testDepth": 1,
+    "static": true,
+    "longname": "test/module.js~describe3.it6",
+    "access": null,
+    "description": "Get path of current module",
+    "lineNumber": 36,
+    "testTargets": [
+      "currentModulePath"
+    ]
+  },
+  {
+    "__docId__": 71,
+    "kind": "test",
+    "name": "it7",
+    "testId": 7,
+    "memberof": "test/module.js~describe3",
+    "testDepth": 1,
+    "static": true,
+    "longname": "test/module.js~describe3.it7",
+    "access": null,
+    "description": "Get or set NPM config",
+    "lineNumber": 45,
+    "testTargets": [
+      "setNPMConfig",
+      "getNPMConfig"
+    ]
+  },
+  {
+    "__docId__": 72,
+    "kind": "testFile",
+    "name": "test/network.js",
+    "content": "import { request } from '../source/network';\n\n\ndescribe('Network utility',  () => {\n    /**\n     * @test {request}\n     */\n    it('HTTP(S) request',  async () => {\n\n        (await request('https://github.com')).should.be.html();\n\n        (await request('https://api.github.com')).should.be.json();\n    });\n});\n",
+    "static": true,
+    "longname": "D:/TechQuery/node-toolkit/test/network.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 73,
+    "kind": "test",
+    "name": "describe8",
+    "testId": 8,
+    "memberof": "test/network.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "test/network.js~describe8",
+    "access": null,
+    "description": "Network utility",
+    "lineNumber": 4
+  },
+  {
+    "__docId__": 74,
+    "kind": "test",
+    "name": "it9",
+    "testId": 9,
+    "memberof": "test/network.js~describe8",
+    "testDepth": 1,
+    "static": true,
+    "longname": "test/network.js~describe8.it9",
+    "access": null,
+    "description": "HTTP(S) request",
+    "lineNumber": 8,
+    "testTargets": [
+      "request"
+    ]
+  }
+]

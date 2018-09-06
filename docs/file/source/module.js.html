@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">source/module.js | @tech_query/node-toolkit</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Toolkit for Node.JS packages"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@tech_query/node-toolkit"><meta property="twitter:description" content="Toolkit for Node.JS packages"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/TechQuery/node-toolkit"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toES_5">toES_5</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toRegExp">toRegExp</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-configOf">configOf</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-currentModulePath">currentModulePath</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getNPMConfig">getNPMConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-patternOf">patternOf</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setNPMConfig">setNPMConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-request">request</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">source/module.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { readFileSync } from &apos;fs&apos;;
+
+import { toRegExp } from &apos;./language&apos;;
+
+import { execSync } from &apos;child_process&apos;;
+
+
+/**
+ * Get configuration of a Package from `package.json` or `${name}.json` in `process.cwd()`
+ *
+ * @param {string} name
+ *
+ * @return {?Object} (`process.env.NODE_ENV` will affect the result)
+ */
+export function configOf(name) {
+
+    var config = JSON.parse( readFileSync(&apos;./package.json&apos;) )[ name ];
+
+    config = config  ||  JSON.parse( readFileSync(`./${name}.json`) );
+
+    if ( config )
+        return  config.env  ?  config.env[ process.env.NODE_ENV ]  :  config;
+}
+
+
+/**
+ * @param {Object} map - Key for RegExp source, value for replacement
+ *
+ * @return {?Object} Key for replacement, value for RegExp
+ */
+export function patternOf(map) {
+
+    var patternMap = { }, count = 0;
+
+    for (let pattern in map)
+        patternMap[ map[ pattern ] ] = toRegExp( pattern ),  count++;
+
+    return  count ? patternMap : null;
+}
+
+
+/**
+ * @return {string}
+ */
+export function currentModulePath() {
+
+    try {  throw Error();  } catch (error) {
+
+        return  error.stack.split( /[\r\n]+/ )[2]
+            .match( /at .+?\((.+):\d+:\d+\)/ )[1].replace(/\\/g, &apos;/&apos;);
+    }
+}
+
+/**
+ * @param {string} key
+ *
+ * @return {?*}
+ */
+export function getNPMConfig(key) {
+
+    const value = (execSync(`npm get ${key}`) + &apos;&apos;).trim();
+
+    if (value !== &apos;undefined&apos;)
+        try {
+            return  JSON.parse( value );
+
+        } catch (error) {  return value;  }
+}
+
+
+/**
+ * @param {string} key
+ * @param {?*}     value
+ */
+export function setNPMConfig(key, value) {
+
+    execSync(
+        (value != null)  ?
+            `npm set ${key} ${value}`  :  `npm config delete ${key}`
+    );
+
+    console.info(`${key} = ${value}`);
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
