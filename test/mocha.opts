@@ -1,0 +1,6 @@
+--require @babel/register
+--require should
+--require should-http
+--timeout 4500
+--colors
+--inline-diffs
