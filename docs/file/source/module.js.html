@@ -29,11 +29,13 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toES_5">toES_5</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findUp">findUp</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toES_5">toES_5</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toRegExp">toRegExp</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-configOf">configOf</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-currentModulePath">currentModulePath</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getNPMConfig">getNPMConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-packageOf">packageOf</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-patternOf">patternOf</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setNPMConfig">setNPMConfig</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-request">request</a></span></span></li>
@@ -45,6 +47,10 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { readFileSync } from &apos;fs&apos;;
 
 import { toRegExp } from &apos;./language&apos;;
+
+import { findUp } from &apos;./file&apos;;
+
+import { basename, dirname } from &apos;path&apos;;
 
 import { execSync } from &apos;child_process&apos;;
 
@@ -93,6 +99,23 @@ export function currentModulePath() {
         return  error.stack.split( /[\r\n]+/ )[2]
             .match( /at .+?\((.+):\d+:\d+\)/ )[1].replace(/\\/g, &apos;/&apos;);
     }
+}
+
+/**
+ * @param {String} [path=&apos;./&apos;]
+ *
+ * @return   {?Object}
+ * @property {String}  path - Root path of this package
+ * @property {Object}  meta - Data of `package.json`
+ */
+export function packageOf(path = &apos;./&apos;) {
+
+    for (let file  of  findUp( path ))
+        if (basename( file )  ===  &apos;package.json&apos;)
+            return {
+                path:  dirname( file ),
+                meta:  JSON.parse( readFileSync( file ) )
+            };
 }
 
 /**

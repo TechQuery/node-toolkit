@@ -29,11 +29,13 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toES_5">toES_5</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findUp">findUp</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toES_5">toES_5</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toRegExp">toRegExp</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-configOf">configOf</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-currentModulePath">currentModulePath</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getNPMConfig">getNPMConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-packageOf">packageOf</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-patternOf">patternOf</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setNPMConfig">setNPMConfig</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-request">request</a></span></span></li>
@@ -116,8 +118,65 @@
         <p>
           
           
+          <span data-ice="generator">*</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-findUp">findUp</a></span></span><span class="code" data-ice="signature">(from: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>)</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Find files upward</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
           
           <span class="code" data-ice="name"><span><a href="function/index.html#static-function-getNPMConfig">getNPMConfig</a></span></span><span class="code" data-ice="signature">(key: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-packageOf">packageOf</a></span></span><span class="code" data-ice="signature">(path: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></span>
         </p>
       </div>
       <div>
@@ -289,11 +348,11 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/source/module.js.html#lineNumber15">source</a></span></span>
+      <span data-ice="source"><span><a href="file/source/module.js.html#lineNumber19">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {configOf} from &apos;<span><a href="file/source/module.js.html#lineNumber15">@tech_query/node-toolkit/source/module.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {configOf} from &apos;<span><a href="file/source/module.js.html#lineNumber19">@tech_query/node-toolkit/source/module.js</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>Get configuration of a Package from <code>package.json</code> or <code>${name}.json</code> in <code>process.cwd()</code></p>
@@ -349,7 +408,7 @@
     <h4>Test:</h4>
     <ul>
       
-    <li data-ice="test"><span><a href="test-file/test/module.js.html#lineNumber12">Meta information of modules Get configuration from &quot;package.json&quot;</a></span></li>
+    <li data-ice="test"><span><a href="test-file/test/module.js.html#lineNumber16">Meta information of modules Get configuration from &quot;package.json&quot;</a></span></li>
 </ul>
   </div>
 
@@ -368,11 +427,11 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/source/module.js.html#lineNumber45">source</a></span></span>
+      <span data-ice="source"><span><a href="file/source/module.js.html#lineNumber49">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {currentModulePath} from &apos;<span><a href="file/source/module.js.html#lineNumber45">@tech_query/node-toolkit/source/module.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {currentModulePath} from &apos;<span><a href="file/source/module.js.html#lineNumber49">@tech_query/node-toolkit/source/module.js</a></span>&apos;</code></pre></div>
   
   
   
@@ -410,7 +469,75 @@
     <h4>Test:</h4>
     <ul>
       
-    <li data-ice="test"><span><a href="test-file/test/module.js.html#lineNumber36">Meta information of modules Get path of current module</a></span></li>
+    <li data-ice="test"><span><a href="test-file/test/module.js.html#lineNumber40">Meta information of modules Get path of current module</a></span></li>
+</ul>
+  </div>
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-function-findUp">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="generator">*</span>
+    <span class="code" data-ice="name">findUp</span><span class="code" data-ice="signature">(from: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>)</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/source/file.js.html#lineNumber13">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {findUp} from &apos;<span><a href="file/source/file.js.html#lineNumber13">@tech_query/node-toolkit/source/file.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Find files upward</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">from</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: &apos;./&apos;</li></ul></td>
+      <td data-ice="description"><p>Find up from a path</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <div data-ice="tests">
+    <h4>Test:</h4>
+    <ul>
+      
+    <li data-ice="test"><span><a href="test-file/test/file.js.html#lineNumber12">File system Find files upward</a></span></li>
 </ul>
   </div>
 
@@ -429,11 +556,11 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/source/module.js.html#lineNumber59">source</a></span></span>
+      <span data-ice="source"><span><a href="file/source/module.js.html#lineNumber80">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {getNPMConfig} from &apos;<span><a href="file/source/module.js.html#lineNumber59">@tech_query/node-toolkit/source/module.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {getNPMConfig} from &apos;<span><a href="file/source/module.js.html#lineNumber80">@tech_query/node-toolkit/source/module.js</a></span>&apos;</code></pre></div>
   
   
   
@@ -487,7 +614,109 @@
     <h4>Test:</h4>
     <ul>
       
-    <li data-ice="test"><span><a href="test-file/test/module.js.html#lineNumber45">Meta information of modules Get or set NPM config</a></span></li>
+    <li data-ice="test"><span><a href="test-file/test/module.js.html#lineNumber60">Meta information of modules Get or set NPM config</a></span></li>
+</ul>
+  </div>
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-function-packageOf">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">packageOf</span><span class="code" data-ice="signature">(path: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/source/module.js.html#lineNumber65">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {packageOf} from &apos;<span><a href="file/source/module.js.html#lineNumber65">@tech_query/node-toolkit/source/module.js</a></span>&apos;</code></pre></div>
+  
+  
+  
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">path</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: &apos;./&apos;</li></ul></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span> (nullable: true)</td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties"><div data-ice="properties">
+  <h4 data-ice="title">Return Properties:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">path</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Root path of this package</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">meta</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Data of <code>package.json</code></p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <div data-ice="tests">
+    <h4>Test:</h4>
+    <ul>
+      
+    <li data-ice="test"><span><a href="test-file/test/module.js.html#lineNumber48">Meta information of modules Get root path of this package</a></span></li>
 </ul>
   </div>
 
@@ -506,11 +735,11 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/source/module.js.html#lineNumber31">source</a></span></span>
+      <span data-ice="source"><span><a href="file/source/module.js.html#lineNumber35">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {patternOf} from &apos;<span><a href="file/source/module.js.html#lineNumber31">@tech_query/node-toolkit/source/module.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {patternOf} from &apos;<span><a href="file/source/module.js.html#lineNumber35">@tech_query/node-toolkit/source/module.js</a></span>&apos;</code></pre></div>
   
   
   
@@ -566,7 +795,7 @@
     <h4>Test:</h4>
     <ul>
       
-    <li data-ice="test"><span><a href="test-file/test/module.js.html#lineNumber26">Meta information of modules Map String config to RegExp edition</a></span></li>
+    <li data-ice="test"><span><a href="test-file/test/module.js.html#lineNumber30">Meta information of modules Map String config to RegExp edition</a></span></li>
 </ul>
   </div>
 
@@ -683,11 +912,11 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/source/module.js.html#lineNumber75">source</a></span></span>
+      <span data-ice="source"><span><a href="file/source/module.js.html#lineNumber96">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {setNPMConfig} from &apos;<span><a href="file/source/module.js.html#lineNumber75">@tech_query/node-toolkit/source/module.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {setNPMConfig} from &apos;<span><a href="file/source/module.js.html#lineNumber96">@tech_query/node-toolkit/source/module.js</a></span>&apos;</code></pre></div>
   
   
   
@@ -735,7 +964,7 @@
     <h4>Test:</h4>
     <ul>
       
-    <li data-ice="test"><span><a href="test-file/test/module.js.html#lineNumber45">Meta information of modules Get or set NPM config</a></span></li>
+    <li data-ice="test"><span><a href="test-file/test/module.js.html#lineNumber60">Meta information of modules Get or set NPM config</a></span></li>
 </ul>
   </div>
 

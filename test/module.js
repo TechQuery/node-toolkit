@@ -1,6 +1,10 @@
 import {
-    configOf, patternOf, currentModulePath, setNPMConfig, getNPMConfig
+    configOf, patternOf, currentModulePath, setNPMConfig, getNPMConfig, packageOf
 } from '../source/module';
+
+import { join } from 'path';
+
+import { readFileSync } from 'fs';
 
 
 describe('Meta information of modules',  () => {
@@ -36,6 +40,17 @@ describe('Meta information of modules',  () => {
     it(
         'Get path of current module',
         ()  =>  currentModulePath().should.match( /^(\w:)?\/.+\/test\/module\.js$/ )
+    );
+
+    /**
+     * @test {packageOf}
+     */
+    it(
+        'Get root path of this package',
+        ()  =>  packageOf( currentModulePath() ).should.be.eql({
+            path:  join(currentModulePath(), '../../').slice(0, -1),
+            meta:  JSON.parse( readFileSync('./package.json') )
+        })
     );
 
     /**

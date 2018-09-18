@@ -2,6 +2,10 @@ import { readFileSync } from 'fs';
 
 import { toRegExp } from './language';
 
+import { findUp } from './file';
+
+import { basename, dirname } from 'path';
+
 import { execSync } from 'child_process';
 
 
@@ -49,6 +53,23 @@ export function currentModulePath() {
         return  error.stack.split( /[\r\n]+/ )[2]
             .match( /at .+?\((.+):\d+:\d+\)/ )[1].replace(/\\/g, '/');
     }
+}
+
+/**
+ * @param {String} [path='./']
+ *
+ * @return   {?Object}
+ * @property {String}  path - Root path of this package
+ * @property {Object}  meta - Data of `package.json`
+ */
+export function packageOf(path = './') {
+
+    for (let file  of  findUp( path ))
+        if (basename( file )  ===  'package.json')
+            return {
+                path:  dirname( file ),
+                meta:  JSON.parse( readFileSync( file ) )
+            };
 }
 
 /**

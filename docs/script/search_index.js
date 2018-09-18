@@ -12,9 +12,21 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@tech_query/node-toolkit/source/file.js~findup",
+    "function/index.html#static-function-findUp",
+    "<span>findUp</span> <span class=\"search-result-import-path\">@tech_query/node-toolkit/source/file.js</span>",
+    "function"
+  ],
+  [
     "@tech_query/node-toolkit/source/module.js~getnpmconfig",
     "function/index.html#static-function-getNPMConfig",
     "<span>getNPMConfig</span> <span class=\"search-result-import-path\">@tech_query/node-toolkit/source/module.js</span>",
+    "function"
+  ],
+  [
+    "@tech_query/node-toolkit/source/module.js~packageof",
+    "function/index.html#static-function-packageOf",
+    "<span>packageOf</span> <span class=\"search-result-import-path\">@tech_query/node-toolkit/source/module.js</span>",
     "function"
   ],
   [
@@ -49,6 +61,18 @@ window.esdocSearchIndex = [
   ],
   [
     "",
+    "test-file/test/file.js.html#lineNumber8",
+    "File system",
+    "test"
+  ],
+  [
+    "findup source/file.js~findup,findup",
+    "test-file/test/file.js.html#lineNumber12",
+    "File system Find files upward",
+    "test"
+  ],
+  [
+    "",
     "test-file/test/language.js.html#lineNumber4",
     "JS language utility",
     "test"
@@ -67,31 +91,37 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/module.js.html#lineNumber6",
+    "test-file/test/module.js.html#lineNumber10",
     "Meta information of modules",
     "test"
   ],
   [
     "configof source/module.js~configof,configof",
-    "test-file/test/module.js.html#lineNumber12",
+    "test-file/test/module.js.html#lineNumber16",
     "Meta information of modules Get configuration from \"package.json\"",
     "test"
   ],
   [
     "setnpmconfig getnpmconfig source/module.js~setnpmconfig,setnpmconfig source/module.js~getnpmconfig,getnpmconfig",
-    "test-file/test/module.js.html#lineNumber45",
+    "test-file/test/module.js.html#lineNumber60",
     "Meta information of modules Get or set NPM config",
     "test"
   ],
   [
     "currentmodulepath source/module.js~currentmodulepath,currentmodulepath",
-    "test-file/test/module.js.html#lineNumber36",
+    "test-file/test/module.js.html#lineNumber40",
     "Meta information of modules Get path of current module",
     "test"
   ],
   [
+    "packageof source/module.js~packageof,packageof",
+    "test-file/test/module.js.html#lineNumber48",
+    "Meta information of modules Get root path of this package",
+    "test"
+  ],
+  [
     "patternof source/module.js~patternof,patternof",
-    "test-file/test/module.js.html#lineNumber26",
+    "test-file/test/module.js.html#lineNumber30",
     "Meta information of modules Map String config to RegExp edition",
     "test"
   ],
@@ -396,6 +426,12 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
+    "source/file.js",
+    "file/source/file.js.html",
+    "source/file.js",
+    "file"
+  ],
+  [
     "source/index.js",
     "file/source/index.js.html",
     "source/index.js",
@@ -418,6 +454,12 @@ window.esdocSearchIndex = [
     "file/source/network.js.html",
     "source/network.js",
     "file"
+  ],
+  [
+    "test/file.js",
+    "test-file/test/file.js.html",
+    "test/file.js",
+    "testFile"
   ],
   [
     "test/language.js",

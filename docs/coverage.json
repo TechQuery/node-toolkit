@@ -1,16 +1,21 @@
 {
   "coverage": "100%",
-  "expectCount": 8,
-  "actualCount": 8,
+  "expectCount": 10,
+  "actualCount": 10,
   "files": {
+    "source/file.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
     "source/language.js": {
       "expectCount": 2,
       "actualCount": 2,
       "undocumentLines": []
     },
     "source/module.js": {
-      "expectCount": 5,
-      "actualCount": 5,
+      "expectCount": 6,
+      "actualCount": 6,
       "undocumentLines": []
     },
     "source/network.js": {
