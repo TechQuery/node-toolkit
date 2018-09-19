@@ -30,6 +30,7 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findUp">findUp</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toDataURI">toDataURI</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toES_5">toES_5</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toRegExp">toRegExp</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-configOf">configOf</a></span></span></li>
@@ -44,11 +45,13 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">test/file.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { findUp } from &apos;../source/file&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { currentModulePath } from &apos;../source/module&apos;;
 
-import { currentModulePath } from &apos;../source/module&apos;;
+import { findUp, toDataURI } from &apos;../source/file&apos;;
 
 import { basename, dirname, join } from &apos;path&apos;;
+
+import { readFileSync } from &apos;fs&apos;;
 
 
 describe(&apos;File system&apos;,  () =&gt; {
@@ -64,6 +67,18 @@ describe(&apos;File system&apos;,  () =&gt; {
 
         dirname( join(current, &apos;../&apos;) ).should.be.equal( dirname( file ) );
     });
+
+    /**
+     * @test {toDataURI}
+     */
+    it(
+        &apos;Convert a file to Data URI&apos;,
+        ()  =&gt;  toDataURI(&apos;./package.json&apos;).should.be.equal(
+            `data:application/json;base64,${
+                readFileSync(&apos;./package.json&apos;).toString(&apos;base64&apos;)
+            }`
+        )
+    );
 });
 </code></pre>
 

@@ -48,6 +48,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@tech_query/node-toolkit/source/file.js~todatauri",
+    "function/index.html#static-function-toDataURI",
+    "<span>toDataURI</span> <span class=\"search-result-import-path\">@tech_query/node-toolkit/source/file.js</span>",
+    "function"
+  ],
+  [
     "@tech_query/node-toolkit/source/language.js~toes_5",
     "function/index.html#static-function-toES_5",
     "<span>toES_5</span> <span class=\"search-result-import-path\">@tech_query/node-toolkit/source/language.js</span>",
@@ -61,13 +67,19 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/file.js.html#lineNumber8",
+    "test-file/test/file.js.html#lineNumber10",
     "File system",
     "test"
   ],
   [
+    "todatauri source/file.js~todatauri,todatauri",
+    "test-file/test/file.js.html#lineNumber27",
+    "File system Convert a file to Data URI",
+    "test"
+  ],
+  [
     "findup source/file.js~findup,findup",
-    "test-file/test/file.js.html#lineNumber12",
+    "test-file/test/file.js.html#lineNumber14",
     "File system Find files upward",
     "test"
   ],

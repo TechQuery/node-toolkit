@@ -1,6 +1,10 @@
 import { join, resolve } from 'path';
 
-import { readdirSync } from 'fs';
+import { readdirSync, readFileSync } from 'fs';
+
+import MIME from 'mime';
+
+import fileType from 'file-type';
 
 
 /**
@@ -23,4 +27,22 @@ export function* findUp(from = './') {
         for (let file  of  readdirSync(from = path))
             yield  join(path, file);
     }
+}
+
+/**
+ * @param {String} path - File path
+ *
+ * @return {String}
+ */
+export function toDataURI(path) {
+
+    const file = readFileSync( path );
+
+    const type = fileType( file );
+
+    return `data:${
+        type  ?  type.mime  :  MIME.getType( path )
+    };base64,${
+        file.toString('base64')
+    }`;
 }

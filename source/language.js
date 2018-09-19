@@ -26,7 +26,8 @@ export function toES_5(code, fileName, onlyModule) {
     const option = {
         plugins:   ['@babel/plugin-transform-modules-commonjs'],
         ast:       false,
-        filename:  fileName || undefined
+        filename:  fileName || undefined,
+        babelrc:   !onlyModule
     };
 
     if (! onlyModule)  option.presets = ['@babel/preset-env'];

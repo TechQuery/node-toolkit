@@ -579,7 +579,7 @@
     "__docId__": 50,
     "kind": "file",
     "name": "source/file.js",
-    "content": "import { join, resolve } from 'path';\n\nimport { readdirSync } from 'fs';\n\n\n/**\n * Find files upward\n *\n * @param {String} [from='./'] - Find up from a path\n *\n * @yield {String} Full file name\n */\nexport function* findUp(from = './') {\n\n    from = resolve( from );\n\n    while ( true ) {\n\n        let path = join(from, '../');\n\n        if (path === from)  break;\n\n        for (let file  of  readdirSync(from = path))\n            yield  join(path, file);\n    }\n}\n",
+    "content": "import { join, resolve } from 'path';\n\nimport { readdirSync, readFileSync } from 'fs';\n\nimport MIME from 'mime';\n\nimport fileType from 'file-type';\n\n\n/**\n * Find files upward\n *\n * @param {String} [from='./'] - Find up from a path\n *\n * @yield {String} Full file name\n */\nexport function* findUp(from = './') {\n\n    from = resolve( from );\n\n    while ( true ) {\n\n        let path = join(from, '../');\n\n        if (path === from)  break;\n\n        for (let file  of  readdirSync(from = path))\n            yield  join(path, file);\n    }\n}\n\n/**\n * @param {String} path - File path\n *\n * @return {String}\n */\nexport function toDataURI(path) {\n\n    const file = readFileSync( path );\n\n    const type = fileType( file );\n\n    return `data:${\n        type  ?  type.mime  :  MIME.getType( path )\n    };base64,${\n        file.toString('base64')\n    }`;\n}\n",
     "static": true,
     "longname": "D:/TechQuery/node-toolkit/source/file.js",
     "access": "public",
@@ -600,7 +600,7 @@
     "importPath": "@tech_query/node-toolkit/source/file.js",
     "importStyle": "{findUp}",
     "description": "Find files upward",
-    "lineNumber": 13,
+    "lineNumber": 17,
     "unknown": [
       {
         "tagName": "@yield",
@@ -625,6 +625,42 @@
   },
   {
     "__docId__": 52,
+    "kind": "function",
+    "name": "toDataURI",
+    "memberof": "source/file.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "source/file.js~toDataURI",
+    "access": "public",
+    "export": true,
+    "importPath": "@tech_query/node-toolkit/source/file.js",
+    "importStyle": "{toDataURI}",
+    "description": "",
+    "lineNumber": 37,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "path",
+        "description": "File path"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 53,
     "kind": "file",
     "name": "source/index.js",
     "content": "export * from './language';\n\nexport * from './module';\n\nexport * from './file';\n\nexport * from './network';\n",
@@ -635,10 +671,10 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 53,
+    "__docId__": 54,
     "kind": "file",
     "name": "source/language.js",
-    "content": "import { transform } from '@babel/core';\n\n\n/**\n * @param {string} raw - RegExp literal string\n *\n * @return {?RegExp}\n */\nexport function toRegExp(raw) {\n\n    const match = raw.match( /^\\/?(.+?)(?:\\/([a-z]+)?)?$/ );\n\n    if ( match )  return  new RegExp(match[1], match[2]);\n}\n\n\n/**\n * @param {string}  code         - ES 6+ source code\n * @param {?string} fileName     - Full name of this JS file\n * @param {boolean} [onlyModule] - Only transform ES 6 module to CommonJS\n *\n * @return {string} ES 5 source code\n */\nexport function toES_5(code, fileName, onlyModule) {\n\n    const option = {\n        plugins:   ['@babel/plugin-transform-modules-commonjs'],\n        ast:       false,\n        filename:  fileName || undefined\n    };\n\n    if (! onlyModule)  option.presets = ['@babel/preset-env'];\n\n    return  transform(code, option).code.replace(\n        /^(?:'|\")use strict(?:'|\");\\n+/,  ''\n    );\n}\n",
+    "content": "import { transform } from '@babel/core';\n\n\n/**\n * @param {string} raw - RegExp literal string\n *\n * @return {?RegExp}\n */\nexport function toRegExp(raw) {\n\n    const match = raw.match( /^\\/?(.+?)(?:\\/([a-z]+)?)?$/ );\n\n    if ( match )  return  new RegExp(match[1], match[2]);\n}\n\n\n/**\n * @param {string}  code         - ES 6+ source code\n * @param {?string} fileName     - Full name of this JS file\n * @param {boolean} [onlyModule] - Only transform ES 6 module to CommonJS\n *\n * @return {string} ES 5 source code\n */\nexport function toES_5(code, fileName, onlyModule) {\n\n    const option = {\n        plugins:   ['@babel/plugin-transform-modules-commonjs'],\n        ast:       false,\n        filename:  fileName || undefined,\n        babelrc:   !onlyModule\n    };\n\n    if (! onlyModule)  option.presets = ['@babel/preset-env'];\n\n    return  transform(code, option).code.replace(\n        /^(?:'|\")use strict(?:'|\");\\n+/,  ''\n    );\n}\n",
     "static": true,
     "longname": "D:/TechQuery/node-toolkit/source/language.js",
     "access": "public",
@@ -646,7 +682,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 54,
+    "__docId__": 55,
     "kind": "function",
     "name": "toRegExp",
     "memberof": "source/language.js",
@@ -682,7 +718,7 @@
     }
   },
   {
-    "__docId__": 55,
+    "__docId__": 56,
     "kind": "function",
     "name": "toES_5",
     "memberof": "source/language.js",
@@ -738,10 +774,10 @@
     }
   },
   {
-    "__docId__": 56,
+    "__docId__": 57,
     "kind": "file",
     "name": "source/module.js",
-    "content": "import { readFileSync } from 'fs';\n\nimport { toRegExp } from './language';\n\nimport { findUp } from './file';\n\nimport { basename, dirname } from 'path';\n\nimport { execSync } from 'child_process';\n\n\n/**\n * Get configuration of a Package from `package.json` or `${name}.json` in `process.cwd()`\n *\n * @param {string} name\n *\n * @return {?Object} (`process.env.NODE_ENV` will affect the result)\n */\nexport function configOf(name) {\n\n    var config = JSON.parse( readFileSync('./package.json') )[ name ];\n\n    config = config  ||  JSON.parse( readFileSync(`./${name}.json`) );\n\n    if ( config )\n        return  config.env  ?  config.env[ process.env.NODE_ENV ]  :  config;\n}\n\n\n/**\n * @param {Object} map - Key for RegExp source, value for replacement\n *\n * @return {?Object} Key for replacement, value for RegExp\n */\nexport function patternOf(map) {\n\n    var patternMap = { }, count = 0;\n\n    for (let pattern in map)\n        patternMap[ map[ pattern ] ] = toRegExp( pattern ),  count++;\n\n    return  count ? patternMap : null;\n}\n\n\n/**\n * @return {string}\n */\nexport function currentModulePath() {\n\n    try {  throw Error();  } catch (error) {\n\n        return  error.stack.split( /[\\r\\n]+/ )[2]\n            .match( /at .+?\\((.+):\\d+:\\d+\\)/ )[1].replace(/\\\\/g, '/');\n    }\n}\n\n/**\n * @param {String} [path='./']\n *\n * @return   {?Object}\n * @property {String}  path - Root path of this package\n * @property {Object}  meta - Data of `package.json`\n */\nexport function packageOf(path = './') {\n\n    for (let file  of  findUp( path ))\n        if (basename( file )  ===  'package.json')\n            return {\n                path:  dirname( file ),\n                meta:  JSON.parse( readFileSync( file ) )\n            };\n}\n\n/**\n * @param {string} key\n *\n * @return {?*}\n */\nexport function getNPMConfig(key) {\n\n    const value = (execSync(`npm get ${key}`) + '').trim();\n\n    if (value !== 'undefined')\n        try {\n            return  JSON.parse( value );\n\n        } catch (error) {  return value;  }\n}\n\n\n/**\n * @param {string} key\n * @param {?*}     value\n */\nexport function setNPMConfig(key, value) {\n\n    execSync(\n        (value != null)  ?\n            `npm set ${key} ${value}`  :  `npm config delete ${key}`\n    );\n\n    console.info(`${key} = ${value}`);\n}\n",
+    "content": "import { readFileSync, existsSync } from 'fs';\n\nimport { toRegExp } from './language';\n\nimport { findUp } from './file';\n\nimport { basename, dirname } from 'path';\n\nimport { execSync } from 'child_process';\n\n\n/**\n * Get configuration of a Package from `package.json` or `${name}.json` in `process.cwd()`\n *\n * @param {string} name\n *\n * @return {?Object} (`process.env.NODE_ENV` will affect the result)\n */\nexport function configOf(name) {\n\n    var config = JSON.parse( readFileSync('./package.json') )[ name ];\n\n    if (!config  &&  existsSync(name = `./${name}.json`))\n        config = JSON.parse( readFileSync( name ) );\n\n    if ( config )\n        return  config.env  ?  config.env[ process.env.NODE_ENV ]  :  config;\n}\n\n\n/**\n * @param {Object} map - Key for RegExp source, value for replacement\n *\n * @return {?Object} Key for replacement, value for RegExp\n */\nexport function patternOf(map) {\n\n    var patternMap = { }, count = 0;\n\n    for (let pattern in map)\n        patternMap[ map[ pattern ] ] = toRegExp( pattern ),  count++;\n\n    return  count ? patternMap : null;\n}\n\n\n/**\n * @return {string}\n */\nexport function currentModulePath() {\n\n    try {  throw Error();  } catch (error) {\n\n        return  error.stack.split( /[\\r\\n]+/ )[2]\n            .match( /at .+?\\((.+):\\d+:\\d+\\)/ )[1].replace(/\\\\/g, '/');\n    }\n}\n\n/**\n * @param {String} [path='./']\n *\n * @return   {?Object}\n * @property {String}  path - Root path of this package\n * @property {Object}  meta - Data of `package.json`\n */\nexport function packageOf(path = './') {\n\n    for (let file  of  findUp( path ))\n        if (basename( file )  ===  'package.json')\n            return {\n                path:  dirname( file ),\n                meta:  JSON.parse( readFileSync( file ) )\n            };\n}\n\n/**\n * @param {string} key\n *\n * @return {?*}\n */\nexport function getNPMConfig(key) {\n\n    const value = (execSync(`npm get ${key}`) + '').trim();\n\n    if (value !== 'undefined')\n        try {\n            return  JSON.parse( value );\n\n        } catch (error) {  return value;  }\n}\n\n\n/**\n * @param {string} key\n * @param {?*}     value\n */\nexport function setNPMConfig(key, value) {\n\n    execSync(\n        (value != null)  ?\n            `npm set ${key} ${value}`  :  `npm config delete ${key}`\n    );\n\n    console.info(`${key} = ${value}`);\n}\n",
     "static": true,
     "longname": "D:/TechQuery/node-toolkit/source/module.js",
     "access": "public",
@@ -749,7 +785,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 57,
+    "__docId__": 58,
     "kind": "function",
     "name": "configOf",
     "memberof": "source/module.js",
@@ -785,7 +821,7 @@
     }
   },
   {
-    "__docId__": 58,
+    "__docId__": 59,
     "kind": "function",
     "name": "patternOf",
     "memberof": "source/module.js",
@@ -798,7 +834,7 @@
     "importPath": "@tech_query/node-toolkit/source/module.js",
     "importStyle": "{patternOf}",
     "description": "",
-    "lineNumber": 35,
+    "lineNumber": 36,
     "params": [
       {
         "nullable": null,
@@ -821,7 +857,7 @@
     }
   },
   {
-    "__docId__": 59,
+    "__docId__": 60,
     "kind": "function",
     "name": "currentModulePath",
     "memberof": "source/module.js",
@@ -834,7 +870,7 @@
     "importPath": "@tech_query/node-toolkit/source/module.js",
     "importStyle": "{currentModulePath}",
     "description": "",
-    "lineNumber": 49,
+    "lineNumber": 50,
     "return": {
       "nullable": null,
       "types": [
@@ -846,7 +882,7 @@
     "params": []
   },
   {
-    "__docId__": 60,
+    "__docId__": 61,
     "kind": "function",
     "name": "packageOf",
     "memberof": "source/module.js",
@@ -859,7 +895,7 @@
     "importPath": "@tech_query/node-toolkit/source/module.js",
     "importStyle": "{packageOf}",
     "description": "",
-    "lineNumber": 65,
+    "lineNumber": 66,
     "params": [
       {
         "nullable": null,
@@ -906,7 +942,7 @@
     }
   },
   {
-    "__docId__": 61,
+    "__docId__": 62,
     "kind": "function",
     "name": "getNPMConfig",
     "memberof": "source/module.js",
@@ -919,7 +955,7 @@
     "importPath": "@tech_query/node-toolkit/source/module.js",
     "importStyle": "{getNPMConfig}",
     "description": "",
-    "lineNumber": 80,
+    "lineNumber": 81,
     "params": [
       {
         "nullable": null,
@@ -942,7 +978,7 @@
     }
   },
   {
-    "__docId__": 62,
+    "__docId__": 63,
     "kind": "function",
     "name": "setNPMConfig",
     "memberof": "source/module.js",
@@ -955,7 +991,7 @@
     "importPath": "@tech_query/node-toolkit/source/module.js",
     "importStyle": "{setNPMConfig}",
     "description": "",
-    "lineNumber": 96,
+    "lineNumber": 97,
     "params": [
       {
         "nullable": null,
@@ -981,7 +1017,7 @@
     "return": null
   },
   {
-    "__docId__": 63,
+    "__docId__": 64,
     "kind": "file",
     "name": "source/network.js",
     "content": "import { parse } from 'url';\n\n\n/**\n * HTTP(S) request\n *\n * @param {string|URL}           URL\n * @param {string}               [method='GET']\n * @param {Object}               [header]\n * @param {string|Object|Buffer} [body]\n *\n * @return {IncomingMessage} HTTP(S) response\n */\nexport  async function request(URL,  method = 'GET',  header,  body) {\n\n    if (typeof URL === 'string')  URL = parse( URL );\n\n    const option = {\n            method,\n            headers:  Object.assign({\n                Accept:        '*/*',\n                'User-Agent':  `Node.JS ${process.version}`\n            }, header)\n        },\n        client = (await import( URL.protocol.slice(0, -1) )).request;\n\n    if ((body instanceof Object)  &&  !(body instanceof Buffer)) {\n\n        option.headers['Content-Type'] = 'application/json';\n\n        body = JSON.stringify( body );\n    }\n\n    for (let key in URL)\n        if (URL[ key ]  &&  !(URL[key] instanceof Function))\n            option[key] = URL[key];\n\n    return  await new Promise((resolve, reject) =>\n        client(option, resolve).on('error', reject).end( body )\n    );\n}\n",
@@ -992,7 +1028,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 64,
+    "__docId__": 65,
     "kind": "function",
     "name": "request",
     "memberof": "source/network.js",
@@ -1072,17 +1108,17 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"@tech_query/node-toolkit\",\n  \"version\": \"0.5.0\",\n  \"description\": \"Toolkit for Node.JS packages\",\n  \"keywords\": [\n    \"toolkit\",\n    \"toolbox\",\n    \"utility\",\n    \"node\",\n    \"package\",\n    \"library\",\n    \"module\"\n  ],\n  \"author\": \"shiy2008@gmail.com\",\n  \"license\": \"LGPL-3.0\",\n  \"homepage\": \"https://techquery.github.io/node-toolkit/\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/TechQuery/node-toolkit.git\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/TechQuery/node-toolkit/issues\"\n  },\n  \"main\": \"dist/index.js\",\n  \"module\": \"source/index.js\",\n  \"engines\": {\n    \"node\": \"^5.12.0\"\n  },\n  \"scripts\": {\n    \"lint\": \"eslint source/ test/ --fix\",\n    \"bundle\": \"babel source/ -d dist/\",\n    \"test\": \"mocha --exit\",\n    \"debug\": \"mocha --inspect-brk\",\n    \"build\": \"npm run lint  &&  npm run bundle  &&  npm test\",\n    \"prepublishOnly\": \"npm run build\",\n    \"precommit\": \"npm run build  &&  esdoc  &&  git add .\",\n    \"start\": \"opn docs/index.html\"\n  },\n  \"dependencies\": {\n    \"@babel/core\": \"^7.1.0\",\n    \"@babel/polyfill\": \"^7.0.0\",\n    \"@babel/runtime\": \"^7.0.0\"\n  },\n  \"devDependencies\": {\n    \"@babel/cli\": \"^7.1.0\",\n    \"@babel/plugin-transform-runtime\": \"^7.1.0\",\n    \"@babel/preset-env\": \"^7.1.0\",\n    \"@babel/register\": \"^7.0.0\",\n    \"babel-eslint\": \"^9.0.0\",\n    \"babel-plugin-dynamic-import-node\": \"^2.1.0\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-external-nodejs-plugin\": \"^1.0.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^5.6.0\",\n    \"husky\": \"^0.14.3\",\n    \"mocha\": \"^5.2.0\",\n    \"opn-cli\": \"^3.1.0\",\n    \"should\": \"^13.2.3\",\n    \"should-http\": \"^0.1.1\"\n  },\n  \"babel\": {\n    \"presets\": [\n      \"@babel/preset-env\"\n    ],\n    \"plugins\": [\n      \"@babel/plugin-transform-runtime\",\n      \"dynamic-import-node\"\n    ]\n  },\n  \"test\": {\n    \"env\": {\n      \"development\": {\n        \"example\": {\n          \"^test$\": \"example\"\n        }\n      }\n    }\n  }\n}\n",
+    "content": "{\n  \"name\": \"@tech_query/node-toolkit\",\n  \"version\": \"0.6.0\",\n  \"description\": \"Toolkit for Node.JS packages\",\n  \"keywords\": [\n    \"toolkit\",\n    \"toolbox\",\n    \"utility\",\n    \"node\",\n    \"package\",\n    \"library\",\n    \"module\"\n  ],\n  \"author\": \"shiy2008@gmail.com\",\n  \"license\": \"LGPL-3.0\",\n  \"homepage\": \"https://techquery.github.io/node-toolkit/\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/TechQuery/node-toolkit.git\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/TechQuery/node-toolkit/issues\"\n  },\n  \"main\": \"dist/index.js\",\n  \"module\": \"source/index.js\",\n  \"engines\": {\n    \"node\": \"^5.12.0\"\n  },\n  \"scripts\": {\n    \"lint\": \"eslint source/ test/ --fix\",\n    \"bundle\": \"babel source/ -d dist/\",\n    \"test\": \"mocha --exit\",\n    \"debug\": \"mocha --inspect-brk\",\n    \"build\": \"npm run lint  &&  npm run bundle  &&  npm test\",\n    \"prepublishOnly\": \"npm run build\",\n    \"precommit\": \"npm run build  &&  esdoc  &&  git add .\",\n    \"start\": \"opn docs/index.html\"\n  },\n  \"dependencies\": {\n    \"@babel/core\": \"^7.1.0\",\n    \"@babel/polyfill\": \"^7.0.0\",\n    \"@babel/runtime\": \"^7.0.0\",\n    \"file-type\": \"^9.0.0\",\n    \"mime\": \"^2.3.1\"\n  },\n  \"devDependencies\": {\n    \"@babel/cli\": \"^7.1.0\",\n    \"@babel/plugin-transform-runtime\": \"^7.1.0\",\n    \"@babel/preset-env\": \"^7.1.0\",\n    \"@babel/register\": \"^7.0.0\",\n    \"babel-eslint\": \"^9.0.0\",\n    \"babel-plugin-dynamic-import-node\": \"^2.1.0\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-external-nodejs-plugin\": \"^1.0.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^5.6.0\",\n    \"husky\": \"^0.14.3\",\n    \"mocha\": \"^5.2.0\",\n    \"opn-cli\": \"^3.1.0\",\n    \"should\": \"^13.2.3\",\n    \"should-http\": \"^0.1.1\"\n  },\n  \"babel\": {\n    \"presets\": [\n      \"@babel/preset-env\"\n    ],\n    \"plugins\": [\n      \"@babel/plugin-transform-runtime\",\n      \"dynamic-import-node\"\n    ]\n  },\n  \"test\": {\n    \"env\": {\n      \"development\": {\n        \"example\": {\n          \"^test$\": \"example\"\n        }\n      }\n    }\n  }\n}\n",
     "longname": "D:\\TechQuery\\node-toolkit\\package.json",
     "name": "package.json",
     "static": true,
     "access": "public"
   },
   {
-    "__docId__": 65,
+    "__docId__": 66,
     "kind": "testFile",
     "name": "test/file.js",
-    "content": "import { findUp } from '../source/file';\n\nimport { currentModulePath } from '../source/module';\n\nimport { basename, dirname, join } from 'path';\n\n\ndescribe('File system',  () => {\n    /**\n     * @test {findUp}\n     */\n    it('Find files upward',  () => {\n\n        const current = currentModulePath();\n\n        for (var file  of  findUp( current ))\n            if (basename( file )  ===  'package.json')  break;\n\n        dirname( join(current, '../') ).should.be.equal( dirname( file ) );\n    });\n});\n",
+    "content": "import { currentModulePath } from '../source/module';\n\nimport { findUp, toDataURI } from '../source/file';\n\nimport { basename, dirname, join } from 'path';\n\nimport { readFileSync } from 'fs';\n\n\ndescribe('File system',  () => {\n    /**\n     * @test {findUp}\n     */\n    it('Find files upward',  () => {\n\n        const current = currentModulePath();\n\n        for (var file  of  findUp( current ))\n            if (basename( file )  ===  'package.json')  break;\n\n        dirname( join(current, '../') ).should.be.equal( dirname( file ) );\n    });\n\n    /**\n     * @test {toDataURI}\n     */\n    it(\n        'Convert a file to Data URI',\n        ()  =>  toDataURI('./package.json').should.be.equal(\n            `data:application/json;base64,${\n                readFileSync('./package.json').toString('base64')\n            }`\n        )\n    );\n});\n",
     "static": true,
     "longname": "D:/TechQuery/node-toolkit/test/file.js",
     "access": null,
@@ -1090,7 +1126,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 66,
+    "__docId__": 67,
     "kind": "test",
     "name": "describe0",
     "testId": 0,
@@ -1100,10 +1136,10 @@
     "longname": "test/file.js~describe0",
     "access": null,
     "description": "File system",
-    "lineNumber": 8
+    "lineNumber": 10
   },
   {
-    "__docId__": 67,
+    "__docId__": 68,
     "kind": "test",
     "name": "it1",
     "testId": 1,
@@ -1113,13 +1149,29 @@
     "longname": "test/file.js~describe0.it1",
     "access": null,
     "description": "Find files upward",
-    "lineNumber": 12,
+    "lineNumber": 14,
     "testTargets": [
       "findUp"
     ]
   },
   {
-    "__docId__": 68,
+    "__docId__": 69,
+    "kind": "test",
+    "name": "it2",
+    "testId": 2,
+    "memberof": "test/file.js~describe0",
+    "testDepth": 1,
+    "static": true,
+    "longname": "test/file.js~describe0.it2",
+    "access": null,
+    "description": "Convert a file to Data URI",
+    "lineNumber": 27,
+    "testTargets": [
+      "toDataURI"
+    ]
+  },
+  {
+    "__docId__": 70,
     "kind": "testFile",
     "name": "test/language.js",
     "content": "import { toRegExp, toES_5 } from '../source/language';\n\n\ndescribe('JS language utility',  () => {\n    /**\n     * @test {toRegExp}\n     */\n    it('Create RegExp() from a literal string',  () => {\n\n        toRegExp('/test|example\\\\//ig').should.be.eql( /test|example\\//gi );\n\n        toRegExp('/^test$/').should.be.eql( /^test$/ );\n\n        toRegExp('test').should.be.eql( /test/ );\n    });\n\n    /**\n     * @test {toES_5}\n     */\n    it('Transform ES 6+ module',  () => {\n\n        toES_5(`\nimport '@babel/polyfill';\n\nasync function test() { }\n\n`, null, true).should.be.equal(`\n\nrequire(\"@babel/polyfill\");\n\nasync function test() {}`.trim());\n    });\n});\n",
@@ -1130,27 +1182,27 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 69,
+    "__docId__": 71,
     "kind": "test",
-    "name": "describe2",
-    "testId": 2,
+    "name": "describe3",
+    "testId": 3,
     "memberof": "test/language.js",
     "testDepth": 0,
     "static": true,
-    "longname": "test/language.js~describe2",
+    "longname": "test/language.js~describe3",
     "access": null,
     "description": "JS language utility",
     "lineNumber": 4
   },
   {
-    "__docId__": 70,
+    "__docId__": 72,
     "kind": "test",
-    "name": "it3",
-    "testId": 3,
-    "memberof": "test/language.js~describe2",
+    "name": "it4",
+    "testId": 4,
+    "memberof": "test/language.js~describe3",
     "testDepth": 1,
     "static": true,
-    "longname": "test/language.js~describe2.it3",
+    "longname": "test/language.js~describe3.it4",
     "access": null,
     "description": "Create RegExp() from a literal string",
     "lineNumber": 8,
@@ -1159,14 +1211,14 @@
     ]
   },
   {
-    "__docId__": 71,
+    "__docId__": 73,
     "kind": "test",
-    "name": "it4",
-    "testId": 4,
-    "memberof": "test/language.js~describe2",
+    "name": "it5",
+    "testId": 5,
+    "memberof": "test/language.js~describe3",
     "testDepth": 1,
     "static": true,
-    "longname": "test/language.js~describe2.it4",
+    "longname": "test/language.js~describe3.it5",
     "access": null,
     "description": "Transform ES 6+ module",
     "lineNumber": 20,
@@ -1175,7 +1227,7 @@
     ]
   },
   {
-    "__docId__": 72,
+    "__docId__": 74,
     "kind": "testFile",
     "name": "test/module.js",
     "content": "import {\n    configOf, patternOf, currentModulePath, setNPMConfig, getNPMConfig, packageOf\n} from '../source/module';\n\nimport { join } from 'path';\n\nimport { readFileSync } from 'fs';\n\n\ndescribe('Meta information of modules',  () => {\n\n    var config;\n    /**\n     * @test {configOf}\n     */\n    it('Get configuration from \"package.json\"',  () => {\n\n        process.env.NODE_ENV = 'development';\n\n        config = configOf('test');\n\n        config.should.be.eql({\n            example:  {'^test$': 'example'}\n        });\n    });\n\n    /**\n     * @test {patternOf}\n     */\n    it(\n        'Map String config to RegExp edition',\n        ()  =>  patternOf( config.example ).should.be.eql({\n            example:  /^test$/\n        })\n    );\n\n    /**\n     * @test {currentModulePath}\n     */\n    it(\n        'Get path of current module',\n        ()  =>  currentModulePath().should.match( /^(\\w:)?\\/.+\\/test\\/module\\.js$/ )\n    );\n\n    /**\n     * @test {packageOf}\n     */\n    it(\n        'Get root path of this package',\n        ()  =>  packageOf( currentModulePath() ).should.be.eql({\n            path:  join(currentModulePath(), '../../').slice(0, -1),\n            meta:  JSON.parse( readFileSync('./package.json') )\n        })\n    );\n\n    /**\n     * @test {setNPMConfig}\n     * @test {getNPMConfig}\n     */\n    it('Get or set NPM config',  () => {\n\n        setNPMConfig('test_example', 'sample');\n\n        getNPMConfig('test_example').should.be.equal('sample');\n\n        setNPMConfig('test_example', true);\n\n        getNPMConfig('test_example').should.be.true();\n\n        setNPMConfig('test_example', null);\n\n        (getNPMConfig('test_example') === undefined).should.be.true();\n    });\n});\n",
@@ -1186,27 +1238,27 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 73,
+    "__docId__": 75,
     "kind": "test",
-    "name": "describe5",
-    "testId": 5,
+    "name": "describe6",
+    "testId": 6,
     "memberof": "test/module.js",
     "testDepth": 0,
     "static": true,
-    "longname": "test/module.js~describe5",
+    "longname": "test/module.js~describe6",
     "access": null,
     "description": "Meta information of modules",
     "lineNumber": 10
   },
   {
-    "__docId__": 74,
+    "__docId__": 76,
     "kind": "test",
-    "name": "it6",
-    "testId": 6,
-    "memberof": "test/module.js~describe5",
+    "name": "it7",
+    "testId": 7,
+    "memberof": "test/module.js~describe6",
     "testDepth": 1,
     "static": true,
-    "longname": "test/module.js~describe5.it6",
+    "longname": "test/module.js~describe6.it7",
     "access": null,
     "description": "Get configuration from \"package.json\"",
     "lineNumber": 16,
@@ -1215,14 +1267,14 @@
     ]
   },
   {
-    "__docId__": 75,
+    "__docId__": 77,
     "kind": "test",
-    "name": "it7",
-    "testId": 7,
-    "memberof": "test/module.js~describe5",
+    "name": "it8",
+    "testId": 8,
+    "memberof": "test/module.js~describe6",
     "testDepth": 1,
     "static": true,
-    "longname": "test/module.js~describe5.it7",
+    "longname": "test/module.js~describe6.it8",
     "access": null,
     "description": "Map String config to RegExp edition",
     "lineNumber": 30,
@@ -1231,14 +1283,14 @@
     ]
   },
   {
-    "__docId__": 76,
+    "__docId__": 78,
     "kind": "test",
-    "name": "it8",
-    "testId": 8,
-    "memberof": "test/module.js~describe5",
+    "name": "it9",
+    "testId": 9,
+    "memberof": "test/module.js~describe6",
     "testDepth": 1,
     "static": true,
-    "longname": "test/module.js~describe5.it8",
+    "longname": "test/module.js~describe6.it9",
     "access": null,
     "description": "Get path of current module",
     "lineNumber": 40,
@@ -1247,14 +1299,14 @@
     ]
   },
   {
-    "__docId__": 77,
+    "__docId__": 79,
     "kind": "test",
-    "name": "it9",
-    "testId": 9,
-    "memberof": "test/module.js~describe5",
+    "name": "it10",
+    "testId": 10,
+    "memberof": "test/module.js~describe6",
     "testDepth": 1,
     "static": true,
-    "longname": "test/module.js~describe5.it9",
+    "longname": "test/module.js~describe6.it10",
     "access": null,
     "description": "Get root path of this package",
     "lineNumber": 48,
@@ -1263,14 +1315,14 @@
     ]
   },
   {
-    "__docId__": 78,
+    "__docId__": 80,
     "kind": "test",
-    "name": "it10",
-    "testId": 10,
-    "memberof": "test/module.js~describe5",
+    "name": "it11",
+    "testId": 11,
+    "memberof": "test/module.js~describe6",
     "testDepth": 1,
     "static": true,
-    "longname": "test/module.js~describe5.it10",
+    "longname": "test/module.js~describe6.it11",
     "access": null,
     "description": "Get or set NPM config",
     "lineNumber": 60,
@@ -1280,7 +1332,7 @@
     ]
   },
   {
-    "__docId__": 79,
+    "__docId__": 81,
     "kind": "testFile",
     "name": "test/network.js",
     "content": "import { request } from '../source/network';\n\n\ndescribe('Network utility',  () => {\n    /**\n     * @test {request}\n     */\n    it('HTTP(S) request',  async () => {\n\n        (await request('https://github.com')).should.be.html();\n\n        (await request('https://api.github.com')).should.be.json();\n    });\n});\n",
@@ -1291,27 +1343,27 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 80,
+    "__docId__": 82,
     "kind": "test",
-    "name": "describe11",
-    "testId": 11,
+    "name": "describe12",
+    "testId": 12,
     "memberof": "test/network.js",
     "testDepth": 0,
     "static": true,
-    "longname": "test/network.js~describe11",
+    "longname": "test/network.js~describe12",
     "access": null,
     "description": "Network utility",
     "lineNumber": 4
   },
   {
-    "__docId__": 81,
+    "__docId__": 83,
     "kind": "test",
-    "name": "it12",
-    "testId": 12,
-    "memberof": "test/network.js~describe11",
+    "name": "it13",
+    "testId": 13,
+    "memberof": "test/network.js~describe12",
     "testDepth": 1,
     "static": true,
-    "longname": "test/network.js~describe11.it12",
+    "longname": "test/network.js~describe12.it13",
     "access": null,
     "description": "HTTP(S) request",
     "lineNumber": 8,

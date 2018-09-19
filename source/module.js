@@ -1,4 +1,4 @@
-import { readFileSync } from 'fs';
+import { readFileSync, existsSync } from 'fs';
 
 import { toRegExp } from './language';
 
@@ -20,7 +20,8 @@ export function configOf(name) {
 
     var config = JSON.parse( readFileSync('./package.json') )[ name ];
 
-    config = config  ||  JSON.parse( readFileSync(`./${name}.json`) );
+    if (!config  &&  existsSync(name = `./${name}.json`))
+        config = JSON.parse( readFileSync( name ) );
 
     if ( config )
         return  config.env  ?  config.env[ process.env.NODE_ENV ]  :  config;

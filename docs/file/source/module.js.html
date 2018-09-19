@@ -30,6 +30,7 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findUp">findUp</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toDataURI">toDataURI</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toES_5">toES_5</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toRegExp">toRegExp</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-configOf">configOf</a></span></span></li>
@@ -44,7 +45,7 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">source/module.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { readFileSync } from &apos;fs&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { readFileSync, existsSync } from &apos;fs&apos;;
 
 import { toRegExp } from &apos;./language&apos;;
 
@@ -66,7 +67,8 @@ export function configOf(name) {
 
     var config = JSON.parse( readFileSync(&apos;./package.json&apos;) )[ name ];
 
-    config = config  ||  JSON.parse( readFileSync(`./${name}.json`) );
+    if (!config  &amp;&amp;  existsSync(name = `./${name}.json`))
+        config = JSON.parse( readFileSync( name ) );
 
     if ( config )
         return  config.env  ?  config.env[ process.env.NODE_ENV ]  :  config;
