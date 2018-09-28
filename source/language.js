@@ -24,10 +24,20 @@ export function toRegExp(raw) {
 export function toES_5(code, fileName, onlyModule) {
 
     const option = {
-        plugins:   ['@babel/plugin-transform-modules-commonjs'],
-        ast:       false,
-        filename:  fileName || undefined,
-        babelrc:   !onlyModule
+        plugins:     ['@babel/plugin-transform-modules-commonjs'],
+        ast:         false,
+        filename:    fileName || undefined,
+        babelrc:     !onlyModule,
+        parserOpts:  {
+            plugins:  [
+                'optionalCatchBinding', 'objectRestSpread', 'asyncGenerators',
+                'classProperties', [
+                    'decorators',  {decoratorsBeforeExport: true}
+                ],
+                'importMeta', 'dynamicImport',
+                'exportDefaultFrom', 'exportNamespaceFrom'
+            ]
+        }
     };
 
     if (! onlyModule)  option.presets = ['@babel/preset-env'];

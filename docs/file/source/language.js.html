@@ -71,10 +71,20 @@ export function toRegExp(raw) {
 export function toES_5(code, fileName, onlyModule) {
 
     const option = {
-        plugins:   [&apos;@babel/plugin-transform-modules-commonjs&apos;],
-        ast:       false,
-        filename:  fileName || undefined,
-        babelrc:   !onlyModule
+        plugins:     [&apos;@babel/plugin-transform-modules-commonjs&apos;],
+        ast:         false,
+        filename:    fileName || undefined,
+        babelrc:     !onlyModule,
+        parserOpts:  {
+            plugins:  [
+                &apos;optionalCatchBinding&apos;, &apos;objectRestSpread&apos;, &apos;asyncGenerators&apos;,
+                &apos;classProperties&apos;, [
+                    &apos;decorators&apos;,  {decoratorsBeforeExport: true}
+                ],
+                &apos;importMeta&apos;, &apos;dynamicImport&apos;,
+                &apos;exportDefaultFrom&apos;, &apos;exportNamespaceFrom&apos;
+            ]
+        }
     };
 
     if (! onlyModule)  option.presets = [&apos;@babel/preset-env&apos;];

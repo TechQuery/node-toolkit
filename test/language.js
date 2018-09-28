@@ -22,12 +22,29 @@ describe('JS language utility',  () => {
         toES_5(`
 import '@babel/polyfill';
 
-async function test() { }
+function decorator() { }
 
+@decorator
+export class Test {
+    async test() { }
+}
 `, null, true).should.be.equal(`
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Test = void 0;
 
 require("@babel/polyfill");
 
-async function test() {}`.trim());
+function decorator() {}
+
+@decorator
+class Test {
+  async test() {}
+
+}
+
+exports.Test = Test;`.trim());
     });
 });

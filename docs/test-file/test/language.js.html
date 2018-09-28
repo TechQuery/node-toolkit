@@ -69,13 +69,30 @@ describe(&apos;JS language utility&apos;,  () =&gt; {
         toES_5(`
 import &apos;@babel/polyfill&apos;;
 
-async function test() { }
+function decorator() { }
 
+@decorator
+export class Test {
+    async test() { }
+}
 `, null, true).should.be.equal(`
+
+Object.defineProperty(exports, &quot;__esModule&quot;, {
+  value: true
+});
+exports.Test = void 0;
 
 require(&quot;@babel/polyfill&quot;);
 
-async function test() {}`.trim());
+function decorator() {}
+
+@decorator
+class Test {
+  async test() {}
+
+}
+
+exports.Test = Test;`.trim());
     });
 });
 </code></pre>
