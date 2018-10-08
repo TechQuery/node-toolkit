@@ -31,6 +31,8 @@
     
   <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findUp">findUp</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toDataURI">toDataURI</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cache">cache</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-prettify">prettify</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toES_5">toES_5</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toRegExp">toRegExp</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-configOf">configOf</a></span></span></li>
@@ -45,7 +47,9 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">test/language.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { toRegExp, toES_5 } from &apos;../source/language&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { toRegExp, toES_5, cache } from &apos;../source/language&apos;;
+
+import { spy } from &apos;sinon&apos;;
 
 
 describe(&apos;JS language utility&apos;,  () =&gt; {
@@ -77,22 +81,39 @@ export class Test {
 }
 `, null, true).should.be.equal(`
 
-Object.defineProperty(exports, &quot;__esModule&quot;, {
-  value: true
+Object.defineProperty(exports, &apos;__esModule&apos;, {
+    value: true
 });
 exports.Test = void 0;
 
-require(&quot;@babel/polyfill&quot;);
+require(&apos;@babel/polyfill&apos;);
 
 function decorator() {}
 
 @decorator
 class Test {
-  async test() {}
-
+    async test() {}
 }
 
 exports.Test = Test;`.trim());
+    });
+
+    /**
+     * @test {cache}
+     */
+    it(&apos;Cache function result&apos;,  () =&gt; {
+
+        const test = spy(example =&gt; example);
+
+        const _test_ = cache( test );
+
+        _test_(1).should.be.equal(1);
+
+        _test_(2).should.be.equal(2);
+
+        _test_(1).should.be.equal(1);
+
+        test.should.be.calledTwice();
     });
 });
 </code></pre>

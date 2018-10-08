@@ -1,5 +1,9 @@
 import { transform } from '@babel/core';
 
+import { format } from 'prettier';
+
+import { deepStrictEqual } from 'assert';
+
 
 /**
  * @param {string} raw - RegExp literal string
@@ -11,6 +15,21 @@ export function toRegExp(raw) {
     const match = raw.match( /^\/?(.+?)(?:\/([a-z]+)?)?$/ );
 
     if ( match )  return  new RegExp(match[1], match[2]);
+}
+
+
+/**
+ * @param {String} source - JS source code
+ *
+ * @return {String} Prettified JS code
+ */
+export function prettify(source) {
+
+    return  format(source, {
+        parser:       'babylon',
+        tabWidth:     4,
+        singleQuote:  true
+    }).trim();
 }
 
 
@@ -42,7 +61,35 @@ export function toES_5(code, fileName, onlyModule) {
 
     if (! onlyModule)  option.presets = ['@babel/preset-env'];
 
-    return  transform(code, option).code.replace(
-        /^(?:'|")use strict(?:'|");\n+/,  ''
+    return prettify(
+        transform(code, option).code.replace(
+            /^(?:'|")use strict(?:'|");\n+/,  ''
+        )
     );
+}
+
+
+/**
+ * @param {Function} func - Original function
+ *
+ * @return {Function} Wrapped function with result cache
+ */
+export function cache(func) {
+
+    const result = new Map();
+
+    return  function (...parameter) {
+
+        for (let [input, output]  of  result)  try {
+
+            deepStrictEqual(input, parameter);  return output;
+
+        } catch (error) {/**/}
+
+        const output = func.apply(this, parameter);
+
+        result.set(parameter, output);
+
+        return output;
+    };
 }

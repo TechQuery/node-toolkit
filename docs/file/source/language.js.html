@@ -31,6 +31,8 @@
     
   <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findUp">findUp</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toDataURI">toDataURI</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cache">cache</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-prettify">prettify</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toES_5">toES_5</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toRegExp">toRegExp</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-configOf">configOf</a></span></span></li>
@@ -47,6 +49,10 @@
 <div class="content" data-ice="content"><h1 data-ice="title">source/language.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { transform } from &apos;@babel/core&apos;;
 
+import { format } from &apos;prettier&apos;;
+
+import { deepStrictEqual } from &apos;assert&apos;;
+
 
 /**
  * @param {string} raw - RegExp literal string
@@ -58,6 +64,21 @@ export function toRegExp(raw) {
     const match = raw.match( /^\/?(.+?)(?:\/([a-z]+)?)?$/ );
 
     if ( match )  return  new RegExp(match[1], match[2]);
+}
+
+
+/**
+ * @param {String} source - JS source code
+ *
+ * @return {String} Prettified JS code
+ */
+export function prettify(source) {
+
+    return  format(source, {
+        parser:       &apos;babylon&apos;,
+        tabWidth:     4,
+        singleQuote:  true
+    }).trim();
 }
 
 
@@ -89,9 +110,37 @@ export function toES_5(code, fileName, onlyModule) {
 
     if (! onlyModule)  option.presets = [&apos;@babel/preset-env&apos;];
 
-    return  transform(code, option).code.replace(
-        /^(?:&apos;|&quot;)use strict(?:&apos;|&quot;);\n+/,  &apos;&apos;
+    return prettify(
+        transform(code, option).code.replace(
+            /^(?:&apos;|&quot;)use strict(?:&apos;|&quot;);\n+/,  &apos;&apos;
+        )
     );
+}
+
+
+/**
+ * @param {Function} func - Original function
+ *
+ * @return {Function} Wrapped function with result cache
+ */
+export function cache(func) {
+
+    const result = new Map();
+
+    return  function (...parameter) {
+
+        for (let [input, output]  of  result)  try {
+
+            deepStrictEqual(input, parameter);  return output;
+
+        } catch (error) {/**/}
+
+        const output = func.apply(this, parameter);
+
+        result.set(parameter, output);
+
+        return output;
+    };
 }
 </code></pre>
 

@@ -1,4 +1,6 @@
-import { toRegExp, toES_5 } from '../source/language';
+import { toRegExp, toES_5, cache } from '../source/language';
+
+import { spy } from 'sinon';
 
 
 describe('JS language utility',  () => {
@@ -30,21 +32,38 @@ export class Test {
 }
 `, null, true).should.be.equal(`
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
+Object.defineProperty(exports, '__esModule', {
+    value: true
 });
 exports.Test = void 0;
 
-require("@babel/polyfill");
+require('@babel/polyfill');
 
 function decorator() {}
 
 @decorator
 class Test {
-  async test() {}
-
+    async test() {}
 }
 
 exports.Test = Test;`.trim());
+    });
+
+    /**
+     * @test {cache}
+     */
+    it('Cache function result',  () => {
+
+        const test = spy(example => example);
+
+        const _test_ = cache( test );
+
+        _test_(1).should.be.equal(1);
+
+        _test_(2).should.be.equal(2);
+
+        _test_(1).should.be.equal(1);
+
+        test.should.be.calledTwice();
     });
 });

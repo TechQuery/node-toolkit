@@ -1,5 +1,11 @@
 window.esdocSearchIndex = [
   [
+    "@tech_query/node-toolkit/source/language.js~cache",
+    "function/index.html#static-function-cache",
+    "<span>cache</span> <span class=\"search-result-import-path\">@tech_query/node-toolkit/source/language.js</span>",
+    "function"
+  ],
+  [
     "@tech_query/node-toolkit/source/module.js~configof",
     "function/index.html#static-function-configOf",
     "<span>configOf</span> <span class=\"search-result-import-path\">@tech_query/node-toolkit/source/module.js</span>",
@@ -33,6 +39,12 @@ window.esdocSearchIndex = [
     "@tech_query/node-toolkit/source/module.js~patternof",
     "function/index.html#static-function-patternOf",
     "<span>patternOf</span> <span class=\"search-result-import-path\">@tech_query/node-toolkit/source/module.js</span>",
+    "function"
+  ],
+  [
+    "@tech_query/node-toolkit/source/language.js~prettify",
+    "function/index.html#static-function-prettify",
+    "<span>prettify</span> <span class=\"search-result-import-path\">@tech_query/node-toolkit/source/language.js</span>",
     "function"
   ],
   [
@@ -85,19 +97,25 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/language.js.html#lineNumber4",
+    "test-file/test/language.js.html#lineNumber6",
     "JS language utility",
     "test"
   ],
   [
+    "cache source/language.js~cache,cache",
+    "test-file/test/language.js.html#lineNumber55",
+    "JS language utility Cache function result",
+    "test"
+  ],
+  [
     "toregexp source/language.js~toregexp,toregexp",
-    "test-file/test/language.js.html#lineNumber8",
+    "test-file/test/language.js.html#lineNumber10",
     "JS language utility Create RegExp() from a literal string",
     "test"
   ],
   [
     "toes_5 source/language.js~toes_5,toes_5",
-    "test-file/test/language.js.html#lineNumber20",
+    "test-file/test/language.js.html#lineNumber22",
     "JS language utility Transform ES 6+ module",
     "test"
   ],

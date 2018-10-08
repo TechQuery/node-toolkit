@@ -1,4 +1,11 @@
-export * from './language';
+export { toRegExp, prettify, cache } from './language';
+
+import { toES_5 as compile, cache } from './language';
+
+/**
+ * @private
+ */
+export const toES_5 = cache( compile );
 
 export * from './module';
 
