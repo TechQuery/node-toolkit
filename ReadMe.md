@@ -13,3 +13,9 @@ Toolkit for [Node.JS packages](https://docs.npmjs.com/getting-started/packages)
  - [Usage example](https://techquery.github.io/node-toolkit/test.html)
 
  - [API document](https://techquery.github.io/node-toolkit/identifiers.html)
+
+
+
+## Typical cases
+
+https://www.npmjs.com/package/@tech_query/node-toolkit?activeTab=dependents

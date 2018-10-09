@@ -2,6 +2,8 @@ import { transform } from '@babel/core';
 
 import { format } from 'prettier';
 
+import { minify } from 'uglify-js';
+
 import { deepStrictEqual } from 'assert';
 
 
@@ -66,6 +68,38 @@ export function toES_5(code, fileName, onlyModule) {
             /^(?:'|")use strict(?:'|");\n+/,  ''
         )
     );
+}
+
+
+/**
+ * @param {String} source   - JS source code
+ * @param {String} filename - Name of this JS source file
+ *
+ * @return   {Object}
+ * @property {String} code
+ * @property {String} map
+ */
+export function uglify(source, filename) {
+
+    const {error, code, map} = minify({
+        [filename]:  source
+    }, {
+        mangle:     {
+            keep_fnames:  true
+        },
+        output:     {
+            comments:  'some'
+        },
+        ie8:        true,
+        sourceMap:  {
+            filename,  url: `${filename}.map`
+        },
+        warnings:   'verbose'
+    });
+
+    if ( error )  throw error;
+
+    return  {code, map};
 }
 
 

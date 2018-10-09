@@ -78,6 +78,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@tech_query/node-toolkit/source/language.js~uglify",
+    "function/index.html#static-function-uglify",
+    "<span>uglify</span> <span class=\"search-result-import-path\">@tech_query/node-toolkit/source/language.js</span>",
+    "function"
+  ],
+  [
     "",
     "test-file/test/file.js.html#lineNumber10",
     "File system",

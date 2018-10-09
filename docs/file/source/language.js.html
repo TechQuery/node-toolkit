@@ -35,6 +35,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-prettify">prettify</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toES_5">toES_5</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toRegExp">toRegExp</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uglify">uglify</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-configOf">configOf</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-currentModulePath">currentModulePath</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getNPMConfig">getNPMConfig</a></span></span></li>
@@ -50,6 +51,8 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { transform } from &apos;@babel/core&apos;;
 
 import { format } from &apos;prettier&apos;;
+
+import { minify } from &apos;uglify-js&apos;;
 
 import { deepStrictEqual } from &apos;assert&apos;;
 
@@ -115,6 +118,38 @@ export function toES_5(code, fileName, onlyModule) {
             /^(?:&apos;|&quot;)use strict(?:&apos;|&quot;);\n+/,  &apos;&apos;
         )
     );
+}
+
+
+/**
+ * @param {String} source   - JS source code
+ * @param {String} filename - Name of this JS source file
+ *
+ * @return   {Object}
+ * @property {String} code
+ * @property {String} map
+ */
+export function uglify(source, filename) {
+
+    const {error, code, map} = minify({
+        [filename]:  source
+    }, {
+        mangle:     {
+            keep_fnames:  true
+        },
+        output:     {
+            comments:  &apos;some&apos;
+        },
+        ie8:        true,
+        sourceMap:  {
+            filename,  url: `${filename}.map`
+        },
+        warnings:   &apos;verbose&apos;
+    });
+
+    if ( error )  throw error;
+
+    return  {code, map};
 }
 
 
