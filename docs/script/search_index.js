@@ -18,6 +18,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@tech_query/node-toolkit/source/file.js~findfile",
+    "function/index.html#static-function-findFile",
+    "<span>findFile</span> <span class=\"search-result-import-path\">@tech_query/node-toolkit/source/file.js</span>",
+    "function"
+  ],
+  [
     "@tech_query/node-toolkit/source/file.js~findup",
     "function/index.html#static-function-findUp",
     "<span>findUp</span> <span class=\"search-result-import-path\">@tech_query/node-toolkit/source/file.js</span>",
@@ -30,9 +36,21 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@tech_query/node-toolkit/source/language.js~hasitem",
+    "function/index.html#static-function-hasItem",
+    "<span>hasItem</span> <span class=\"search-result-import-path\">@tech_query/node-toolkit/source/language.js</span>",
+    "function"
+  ],
+  [
     "@tech_query/node-toolkit/source/module.js~packageof",
     "function/index.html#static-function-packageOf",
     "<span>packageOf</span> <span class=\"search-result-import-path\">@tech_query/node-toolkit/source/module.js</span>",
+    "function"
+  ],
+  [
+    "@tech_query/node-toolkit/source/language.js~patch",
+    "function/index.html#static-function-patch",
+    "<span>patch</span> <span class=\"search-result-import-path\">@tech_query/node-toolkit/source/language.js</span>",
     "function"
   ],
   [
@@ -117,6 +135,30 @@ window.esdocSearchIndex = [
     "toregexp source/language.js~toregexp,toregexp",
     "test-file/test/language.js.html#lineNumber10",
     "JS language utility Create RegExp() from a literal string",
+    "test"
+  ],
+  [
+    "patch source/language.js~patch,patch",
+    "test-file/test/language.js.html#lineNumber73",
+    "JS language utility Patch data",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/language.js.html#lineNumber92",
+    "JS language utility Patch data Array",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/language.js.html#lineNumber105",
+    "JS language utility Patch data Nested object",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/language.js.html#lineNumber75",
+    "JS language utility Patch data Object",
     "test"
   ],
   [

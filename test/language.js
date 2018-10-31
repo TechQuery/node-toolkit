@@ -1,4 +1,4 @@
-import { toRegExp, toES_5, cache } from '../source/language';
+import { toRegExp, toES_5, cache, patch } from '../source/language';
 
 import { spy } from 'sinon';
 
@@ -65,5 +65,60 @@ exports.Test = Test;`.trim());
         _test_(1).should.be.equal(1);
 
         test.should.be.calledTwice();
+    });
+
+    /**
+     * @test {patch}
+     */
+    describe('Patch data',  () => {
+
+        it('Object',  () => {
+
+            patch(
+                {
+                    test:  'string'
+                },
+                {
+                    test:     'String',
+                    example:  'text'
+                }
+            ).should.be.eql({
+                test:     'string',
+                example:  'text'
+            });
+        });
+
+
+        it('Array',  () => {
+
+            const object = {test: 'example'};
+
+            patch(
+                ['test', object],
+                ['example', object]
+            ).should.be.eql([
+                'test', object, 'example'
+            ]);
+        });
+
+
+        it('Nested object',  () => {
+
+            const mixin = {
+                test:  {
+                    example:  1,
+                    sample:   2
+                }
+            };
+
+            patch(
+                {
+                    test:  {
+                        example:  1
+                    }
+                },
+                mixin
+            ).should.be.eql( mixin );
+        });
     });
 });

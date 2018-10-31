@@ -127,3 +127,49 @@ export function cache(func) {
         return output;
     };
 }
+
+
+/**
+ * @param {Iterable} list
+ * @param {*}        value
+ *
+ * @return {Boolean} Whether `list` has a same `value`
+ */
+export function hasItem(list, value) {
+
+    return  Array.prototype.some.call(list,  item => {
+        try {
+            deepStrictEqual(item, value);  return true;
+
+        } catch (error) {  return false;  }
+    });
+}
+
+
+/**
+ * Add values which the target object doesn't have
+ *
+ * @param {Object|Array}      target
+ * @param {...(Object|Array)} mixin
+ *
+ * @return {Object|Array} The `target`
+ */
+export function patch(target, ...mixin) {
+
+    for (let source of mixin)
+        if (typeof target.length === 'number') {
+
+            for (let value of source)
+                if (! hasItem(target, value))  target.push( value );
+
+        } else if (typeof target === 'object') {
+
+            for (let key in source)
+                if (!(key in target))
+                    target[key] = source[key];
+                else if (typeof target[key] === 'object')
+                    patch(target[key], source[key]);
+        }
+
+    return target;
+}

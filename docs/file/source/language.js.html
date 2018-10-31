@@ -29,9 +29,12 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findUp">findUp</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findFile">findFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findUp">findUp</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toDataURI">toDataURI</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cache">cache</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-hasItem">hasItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-patch">patch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-prettify">prettify</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toES_5">toES_5</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toRegExp">toRegExp</a></span></span></li>
@@ -176,6 +179,52 @@ export function cache(func) {
 
         return output;
     };
+}
+
+
+/**
+ * @param {Iterable} list
+ * @param {*}        value
+ *
+ * @return {Boolean} Whether `list` has a same `value`
+ */
+export function hasItem(list, value) {
+
+    return  Array.prototype.some.call(list,  item =&gt; {
+        try {
+            deepStrictEqual(item, value);  return true;
+
+        } catch (error) {  return false;  }
+    });
+}
+
+
+/**
+ * Add values which the target object doesn&apos;t have
+ *
+ * @param {Object|Array}      target
+ * @param {...(Object|Array)} mixin
+ *
+ * @return {Object|Array} The `target`
+ */
+export function patch(target, ...mixin) {
+
+    for (let source of mixin)
+        if (typeof target.length === &apos;number&apos;) {
+
+            for (let value of source)
+                if (! hasItem(target, value))  target.push( value );
+
+        } else if (typeof target === &apos;object&apos;) {
+
+            for (let key in source)
+                if (!(key in target))
+                    target[key] = source[key];
+                else if (typeof target[key] === &apos;object&apos;)
+                    patch(target[key], source[key]);
+        }
+
+    return target;
 }
 </code></pre>
 

@@ -1,10 +1,24 @@
-import { join, resolve } from 'path';
-
 import { readdirSync, readFileSync } from 'fs';
+
+import { join, resolve } from 'path';
 
 import MIME from 'mime';
 
 import fileType from 'file-type';
+
+
+/**
+ * @param {String|RegExp} name       - Pattern of File name
+ * @param {String}        [path='.']
+ *
+ * @return {?String} File path
+ */
+export function findFile(name, path = '.') {
+
+    name = readdirSync( path ).find(file  =>  file.match( name ));
+
+    if ( name )  return join(path, name);
+}
 
 
 /**

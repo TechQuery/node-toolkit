@@ -29,9 +29,12 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findUp">findUp</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findFile">findFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findUp">findUp</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toDataURI">toDataURI</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cache">cache</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-hasItem">hasItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-patch">patch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-prettify">prettify</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toES_5">toES_5</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toRegExp">toRegExp</a></span></span></li>
@@ -48,7 +51,7 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">test/language.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { toRegExp, toES_5, cache } from &apos;../source/language&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { toRegExp, toES_5, cache, patch } from &apos;../source/language&apos;;
 
 import { spy } from &apos;sinon&apos;;
 
@@ -115,6 +118,61 @@ exports.Test = Test;`.trim());
         _test_(1).should.be.equal(1);
 
         test.should.be.calledTwice();
+    });
+
+    /**
+     * @test {patch}
+     */
+    describe(&apos;Patch data&apos;,  () =&gt; {
+
+        it(&apos;Object&apos;,  () =&gt; {
+
+            patch(
+                {
+                    test:  &apos;string&apos;
+                },
+                {
+                    test:     &apos;String&apos;,
+                    example:  &apos;text&apos;
+                }
+            ).should.be.eql({
+                test:     &apos;string&apos;,
+                example:  &apos;text&apos;
+            });
+        });
+
+
+        it(&apos;Array&apos;,  () =&gt; {
+
+            const object = {test: &apos;example&apos;};
+
+            patch(
+                [&apos;test&apos;, object],
+                [&apos;example&apos;, object]
+            ).should.be.eql([
+                &apos;test&apos;, object, &apos;example&apos;
+            ]);
+        });
+
+
+        it(&apos;Nested object&apos;,  () =&gt; {
+
+            const mixin = {
+                test:  {
+                    example:  1,
+                    sample:   2
+                }
+            };
+
+            patch(
+                {
+                    test:  {
+                        example:  1
+                    }
+                },
+                mixin
+            ).should.be.eql( mixin );
+        });
     });
 });
 </code></pre>
