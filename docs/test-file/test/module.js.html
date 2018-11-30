@@ -57,7 +57,7 @@
 
 import { join } from &apos;path&apos;;
 
-import { readFileSync } from &apos;fs&apos;;
+import { readJSONSync } from &apos;fs-extra&apos;;
 
 
 describe(&apos;Meta information of modules&apos;,  () =&gt; {
@@ -102,7 +102,7 @@ describe(&apos;Meta information of modules&apos;,  () =&gt; {
         &apos;Get root path of this package&apos;,
         ()  =&gt;  packageOf( currentModulePath() ).should.be.eql({
             path:  join(currentModulePath(), &apos;../../&apos;).slice(0, -1),
-            meta:  JSON.parse( readFileSync(&apos;./package.json&apos;) )
+            meta:  readJSONSync(&apos;./package.json&apos;)
         })
     );
 

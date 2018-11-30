@@ -51,7 +51,7 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">source/module.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { readFileSync, existsSync } from &apos;fs&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { readJSONSync, existsSync } from &apos;fs-extra&apos;;
 
 import { toRegExp } from &apos;./language&apos;;
 
@@ -71,10 +71,10 @@ import { execSync } from &apos;child_process&apos;;
  */
 export function configOf(name) {
 
-    var config = JSON.parse( readFileSync(&apos;./package.json&apos;) )[ name ];
+    var config = readJSONSync(&apos;./package.json&apos;)[ name ];
 
     if (!config  &amp;&amp;  existsSync(name = `./${name}.json`))
-        config = JSON.parse( readFileSync( name ) );
+        config = readJSONSync( name );
 
     if ( config )
         return  config.env  ?  config.env[ process.env.NODE_ENV ]  :  config;
@@ -122,7 +122,7 @@ export function packageOf(path = &apos;./&apos;) {
         if (basename( file )  ===  &apos;package.json&apos;)
             return {
                 path:  dirname( file ),
-                meta:  JSON.parse( readFileSync( file ) )
+                meta:  readJSONSync( file )
             };
 }
 

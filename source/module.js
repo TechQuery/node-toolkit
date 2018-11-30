@@ -1,4 +1,4 @@
-import { readFileSync, existsSync } from 'fs';
+import { readJSONSync, existsSync } from 'fs-extra';
 
 import { toRegExp } from './language';
 
@@ -18,10 +18,10 @@ import { execSync } from 'child_process';
  */
 export function configOf(name) {
 
-    var config = JSON.parse( readFileSync('./package.json') )[ name ];
+    var config = readJSONSync('./package.json')[ name ];
 
     if (!config  &&  existsSync(name = `./${name}.json`))
-        config = JSON.parse( readFileSync( name ) );
+        config = readJSONSync( name );
 
     if ( config )
         return  config.env  ?  config.env[ process.env.NODE_ENV ]  :  config;
@@ -69,7 +69,7 @@ export function packageOf(path = './') {
         if (basename( file )  ===  'package.json')
             return {
                 path:  dirname( file ),
-                meta:  JSON.parse( readFileSync( file ) )
+                meta:  readJSONSync( file )
             };
 }
 

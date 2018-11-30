@@ -8,6 +8,16 @@ Toolkit for [Node.JS packages](https://docs.npmjs.com/getting-started/packages)
 
 
 
+## Basic usage
+
+```JavaScript
+import '@babel/polyfill';
+import '@babel/runtime';
+
+import * as Toolkit from '@tech_query/node-toolkit';
+```
+
+
 ## Utility methods
 
  - [Usage example](https://techquery.github.io/node-toolkit/test.html)

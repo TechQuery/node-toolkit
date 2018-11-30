@@ -1,4 +1,4 @@
-export { toRegExp, prettify, uglify, cache } from './language';
+export { toRegExp, prettify, uglify, cache, hasItem, patch } from './language';
 
 import { toES_5 as compile, cache } from './language';
 
