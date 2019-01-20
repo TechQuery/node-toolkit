@@ -10,9 +10,12 @@ Toolkit for [Node.JS packages](https://docs.npmjs.com/getting-started/packages)
 
 ## Basic usage
 
+```Shell
+npm install @tech_query/node-toolkit @babel/polyfill @babel/runtime
+```
+
 ```JavaScript
 import '@babel/polyfill';
-import '@babel/runtime';
 
 import * as Toolkit from '@tech_query/node-toolkit';
 ```
