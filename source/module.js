@@ -1,12 +1,27 @@
+import { basename, resolve, dirname } from 'path';
+
 import { readJSONSync, existsSync } from 'fs-extra';
 
 import { toRegExp } from './language';
 
 import { findUp } from './file';
 
-import { basename, dirname } from 'path';
-
 import { execSync } from 'child_process';
+
+
+/**
+ * @param {String} path
+ *
+ * @return {String}
+ */
+export  function packageNameOf(path) {
+
+    path = resolve( path ).split( /[/\\]+/ );
+
+    path = path.slice((path.slice(-2)[0][0] === '@')  ?  -2  :  -1).join('/');
+
+    return  path.toLowerCase().replace(/[^@/\w]+/g, '-');
+}
 
 
 /**

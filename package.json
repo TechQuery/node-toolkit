@@ -1,6 +1,6 @@
 {
   "name": "@tech_query/node-toolkit",
-  "version": "0.8.2",
+  "version": "0.9.0",
   "description": "Toolkit for Node.JS packages",
   "keywords": [
     "toolkit",
@@ -24,40 +24,41 @@
   "main": "dist/index.js",
   "module": "source/index.js",
   "engines": {
-    "node": "^5.12.0"
+    "node": "^6.3.0"
   },
   "scripts": {
     "lint": "eslint source/ test/ --fix",
     "test": "mocha --exit",
     "debug": "mocha --inspect-brk",
-    "compile": "babel source/ -d dist/",
-    "build": "npm run lint  &&  npm test  &&  npm run compile  &&  esdoc",
-    "prepublishOnly": "npm run build",
+    "compile": "babel source/ -d dist/ -s",
+    "prepublishOnly": "npm run lint  &&  npm test  &&  npm run compile",
+    "build": "npm run prepublishOnly  &&  esdoc",
     "start": "opn docs/index.html"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run build  &&  git add ."
+      "pre-commit": "npm run prepublishOnly  &&  git add ."
     }
   },
   "dependencies": {
-    "@babel/core": "^7.1.6",
-    "@babel/plugin-transform-modules-commonjs": "^7.1.0",
-    "@babel/preset-env": "^7.1.6",
-    "file-type": "^10.5.0",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.2.0",
+    "@babel/preset-env": "^7.2.3",
+    "file-type": "^10.7.0",
     "fs-extra": "^7.0.1",
     "mime": "^2.4.0",
     "prettier": "^1.15.3",
     "uglify-js": "^3.4.9"
   },
   "peerDependencies": {
-    "@babel/polyfill": "^7.0.0",
-    "@babel/runtime": "^7.1.5"
+    "@babel/polyfill": "^7.2.5",
+    "@babel/runtime": "^7.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.5",
-    "@babel/plugin-transform-runtime": "^7.1.0",
-    "@babel/polyfill": "^7.0.0",
+    "@babel/cli": "^7.2.3",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/runtime": "^7.2.0",
     "@babel/register": "^7.0.0",
     "babel-eslint": "^10.0.1",
     "babel-plugin-dynamic-import-node": "^2.2.0",
@@ -65,18 +66,25 @@
     "esdoc-ecmascript-proposal-plugin": "^1.0.0",
     "esdoc-external-nodejs-plugin": "^1.0.0",
     "esdoc-standard-plugin": "^1.0.0",
-    "eslint": "^5.9.0",
-    "husky": "^1.2.0",
+    "eslint": "^5.12.0",
+    "husky": "^1.3.1",
     "mocha": "^5.2.0",
-    "opn-cli": "^3.1.0",
+    "opn-cli": "^4.0.0",
     "should": "^13.2.3",
     "should-http": "^0.1.1",
     "should-sinon": "0.0.6",
-    "sinon": "^7.1.1"
+    "sinon": "^7.2.2"
   },
   "babel": {
     "presets": [
-      "@babel/preset-env"
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "6.3.0"
+          }
+        }
+      ]
     ],
     "plugins": [
       "@babel/plugin-transform-runtime",

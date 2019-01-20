@@ -1,5 +1,6 @@
 import {
-    configOf, patternOf, currentModulePath, setNPMConfig, getNPMConfig, packageOf
+    packageNameOf, configOf, patternOf, currentModulePath, setNPMConfig,
+    getNPMConfig, packageOf
 } from '../source/module';
 
 import { join } from 'path';
@@ -8,6 +9,14 @@ import { readJSONSync } from 'fs-extra';
 
 
 describe('Meta information of modules',  () => {
+    /**
+     * @test {packageNameOf}
+     */
+    it(
+        'Get legal Package name',
+        () => packageNameOf('@EasyWebApp/ES-pack')
+            .should.be.equal('@easywebapp/es-pack')
+    );
 
     var config;
     /**
@@ -57,18 +66,27 @@ describe('Meta information of modules',  () => {
      * @test {setNPMConfig}
      * @test {getNPMConfig}
      */
-    it('Get or set NPM config',  () => {
+    describe('Get or set NPM config',  () => {
 
-        setNPMConfig('test_example', 'sample');
+        it('String value',  () => {
 
-        getNPMConfig('test_example').should.be.equal('sample');
+            setNPMConfig('test_example', 'sample');
 
-        setNPMConfig('test_example', true);
+            getNPMConfig('test_example').should.be.equal('sample');
+        });
 
-        getNPMConfig('test_example').should.be.true();
+        it('Boolean value',  () => {
 
-        setNPMConfig('test_example', null);
+            setNPMConfig('test_example', true);
 
-        (getNPMConfig('test_example') === undefined).should.be.true();
+            getNPMConfig('test_example').should.be.true();
+        });
+
+        it('Clean value',  () => {
+
+            setNPMConfig('test_example', null);
+
+            (getNPMConfig('test_example') === undefined).should.be.true();
+        });
     });
 });
