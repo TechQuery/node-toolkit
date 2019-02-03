@@ -34,6 +34,23 @@ export  function spawn(command, args, options) {
 }
 
 
+/**
+ * Ensure a Global NPM command installed
+ *
+ * @param {String} name - Command name
+ * @param {String} [ID] - Package name
+ */
+export  async function ensureCommand(name, ID) {
+    try {
+        await spawn(name, ['-h']);
+
+    } catch (error) {
+
+        await spawn('npm',  ['install',  ID || (name + '-cli'),  '-g']);
+    }
+}
+
+
 var index = 0;
 /**
  * @param {String}                                                  title
