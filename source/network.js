@@ -39,3 +39,31 @@ export  async function request(URL,  method = 'GET',  header,  body) {
         client(option, resolve).on('error', reject).end( body )
     );
 }
+
+
+/**
+ * @param {Readable} source
+ *
+ * @return {String|Object}
+ */
+export async function readStream(source) {
+
+    var data = '';
+
+    source.on('data',  chunk => (data += chunk));
+
+    await  new Promise((resolve, reject) => {
+
+        source.on('end',  () => resolve( data ));
+
+        source.on('error', reject);
+    });
+
+    try {
+        return JSON.parse( data );
+
+    } catch (error) {
+
+        return data;
+    }
+}

@@ -1,10 +1,12 @@
-import { basename, resolve, dirname } from 'path';
+import { resolve, basename, dirname } from 'path';
 
-import { readJSONSync, existsSync } from 'fs-extra';
+import { readJSONSync, existsSync, readFileSync } from 'fs-extra';
 
 import { toRegExp } from './language';
 
 import { findUp } from './file';
+
+import { parse } from 'yaml';
 
 import { execSync } from 'child_process';
 
@@ -21,25 +23,6 @@ export  function packageNameOf(path) {
     path = path.slice((path.slice(-2)[0][0] === '@')  ?  -2  :  -1).join('/');
 
     return  path.toLowerCase().replace(/[^@/\w]+/g, '-');
-}
-
-
-/**
- * Get configuration of a Package from `package.json` or `${name}.json` in `process.cwd()`
- *
- * @param {string} name
- *
- * @return {?Object} (`process.env.NODE_ENV` will affect the result)
- */
-export function configOf(name) {
-
-    var config = readJSONSync('./package.json')[ name ];
-
-    if (!config  &&  existsSync(name = `./${name}.json`))
-        config = readJSONSync( name );
-
-    if ( config )
-        return  config.env  ?  config.env[ process.env.NODE_ENV ]  :  config;
 }
 
 
@@ -87,6 +70,36 @@ export function packageOf(path = './') {
                 meta:  readJSONSync( file )
             };
 }
+
+
+/**
+ * Get configuration of a Package from
+ * `package.json`, `.${name}.json` or `.${name}.yml` in `process.cwd()`
+ *
+ * @param {string} name
+ *
+ * @return {?Object} (`process.env.NODE_ENV` will affect the result)
+ */
+export function configOf(name) {
+
+    var config = ((packageOf('./test') || '').meta || '')[ name ];
+
+    if (! config)
+        for (let type  of  ['json', 'yaml', 'yml'])
+            if (existsSync(name = `./.${name}.${type}`)) {
+
+                switch ( type ) {
+                    case 'json':    config = readJSONSync( name );  break;
+                    case 'yaml':
+                    case 'yml':     config = parse(readFileSync( name ) + '');
+                }
+                break;
+            }
+
+    if ( config )
+        return  config.env  ?  config.env[ process.env.NODE_ENV ]  :  config;
+}
+
 
 /**
  * @param {string} key

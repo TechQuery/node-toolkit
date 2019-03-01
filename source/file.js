@@ -38,8 +38,9 @@ export function* findUp(from = './') {
 
         if (path === from)  break;
 
-        for (let file  of  readdirSync(from = path))
-            yield  join(path, file);
+        let file = readdirSync(from = path);
+
+        while ( file[0] )  yield  join(path, file.shift());
     }
 }
 

@@ -28,7 +28,7 @@ export function toRegExp(raw) {
 export function prettify(source) {
 
     return  format(source, {
-        parser:       'babylon',
+        parser:       'babel',
         tabWidth:     4,
         singleQuote:  true
     }).trim();
@@ -156,13 +156,13 @@ export function hasItem(list, value) {
  */
 export function patch(target, ...mixin) {
 
-    for (let source of mixin)
-        if (typeof target.length === 'number') {
+    mixin.forEach(source => {
 
-            for (let value of source)
-                if (! hasItem(target, value))  target.push( value );
-
-        } else if (typeof target === 'object') {
+        if (typeof target.length === 'number')
+            Array.from(
+                source,  value => hasItem(target, value) || target.push( value )
+            );
+        else if (typeof target === 'object') {
 
             for (let key in source)
                 if (!(key in target))
@@ -170,6 +170,7 @@ export function patch(target, ...mixin) {
                 else if (typeof target[key] === 'object')
                     patch(target[key], source[key]);
         }
+    });
 
     return target;
 }
