@@ -8,6 +8,15 @@ import { deepStrictEqual } from 'assert';
 
 
 /**
+ * @return {String} Number with 36 radix
+ */
+export function uniqueID() {
+
+    return  Number( (Math.random() + '').slice(2) ).toString( 36 );
+}
+
+
+/**
  * @param {string} raw - RegExp literal string
  *
  * @return {?RegExp}

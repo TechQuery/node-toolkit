@@ -1,6 +1,6 @@
 import { currentModulePath } from '../source/module';
 
-import { findUp, toDataURI } from '../source/file';
+import { findUp, toDataURI, blobFrom } from '../source/file';
 
 import { basename, dirname, join } from 'path';
 
@@ -23,13 +23,21 @@ describe('File system',  () => {
 
     /**
      * @test {toDataURI}
+     * @test {blobFrom}
      */
-    it(
-        'Convert a file to Data URI',
-        ()  =>  toDataURI('./package.json').should.be.equal(
-            `data:application/json;base64,${
-                readFileSync('./package.json').toString('base64')
-            }`
-        )
-    );
+    it('Encode & Decode of Data URI',  () => {
+
+        const URI = toDataURI('./package.json'),
+            data = readFileSync('./package.json');
+
+        URI.should.be.equal(
+            `data:application/json;base64,${ data.toString('base64') }`
+        );
+
+        blobFrom( URI ).should.be.eql({
+            MIME:       'application/json',
+            extension:  'json',
+            data
+        });
+    });
 });

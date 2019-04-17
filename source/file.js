@@ -61,3 +61,29 @@ export function toDataURI(path) {
         file.toString('base64')
     }`;
 }
+
+
+const DataURI_pattern = /^data:(.+?\/(.+?))?(;base64)?,(\S+)/;
+
+/**
+ * @param {String} DataURI - https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs
+ *
+ * @return   {Object}
+ * @property {String} MIME      - [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_Types)
+ * @property {String} extension - Extension name of a File
+ * @property {Buffer} data
+ */
+export function blobFrom(DataURI) {
+
+    var [MIME, extension, base64, data] = (
+        DataURI_pattern.exec( DataURI )  ||  [ ]
+    ).slice(1);
+
+    data = Buffer.from(data, base64 ? 'base64' : 'utf-8');
+
+    return {
+        MIME:      MIME  ||  (fileType( data ) || '').mime,
+        extension,
+        data
+    };
+}
