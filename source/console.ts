@@ -7,7 +7,7 @@ import crossSpawn from 'cross-spawn';
 export function spawn(command: string, args: string[], options?: SpawnOptions) {
     const process = crossSpawn(command, args, options);
 
-    return new Promise((resolve, reject) => {
+    return new Promise<string>((resolve, reject) => {
         let data = '';
 
         function exit(code: number, signal: string) {

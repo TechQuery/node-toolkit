@@ -43,7 +43,7 @@ const DataURI_pattern = /^data:(.+?\/(.+?))?(;base64)?,(\S+)/;
 export async function blobFrom(DataURI: string) {
     const [MIME, extension, base64, raw] = (
         DataURI_pattern.exec(DataURI) || []
-    ).slice(1);
+    ).slice(1) as string[];
 
     const data = Buffer.from(raw, base64 ? 'base64' : 'utf-8');
 

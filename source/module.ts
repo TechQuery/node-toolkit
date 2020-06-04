@@ -15,12 +15,12 @@ export function packageNameOf(path: string) {
 }
 
 /**
- * @param {Object} map - Key for RegExp source, value for replacement
+ * @param map - Key for RegExp source, value for replacement
  *
- * @return {?Object} Key for replacement, value for RegExp
+ * @return Key for replacement, value for RegExp
  */
 export function patternOf(map: Record<string, string>) {
-    const patternMap = {};
+    const patternMap: Record<string, RegExp> = {};
 
     for (const pattern in map) patternMap[map[pattern]] = toRegExp(pattern);
 
@@ -31,14 +31,16 @@ export function currentModulePath() {
     try {
         throw Error();
     } catch (error) {
-        return (error.stack as string)
-            .split(/[\r\n]+/)[2]
+        return (error as Error).stack
+            ?.split(/[\r\n]+/)[2]
             .match(/at .+?\((.+):\d+:\d+\)/)[1]
             .replace(/\\/g, '/');
     }
 }
 
-export function packageOf(path = './') {
+export function packageOf(
+    path = './'
+): { path: string; meta: Record<string, any> } {
     for (const file of findUp(path))
         if (basename(file) === 'package.json')
             return {
@@ -53,7 +55,7 @@ export function packageOf(path = './') {
  *
  * (`process.env.NODE_ENV` will affect the result)
  */
-export function configOf(name: string) {
+export function configOf(name: string): Record<string, any> {
     let config = packageOf('./test')?.meta?.[name];
 
     if (!config)
@@ -87,8 +89,10 @@ export function getNPMConfig(
 }
 
 export function setNPMConfig(key: string, value: any) {
+    const data = JSON.stringify(value);
+
     execSync(
-        value != null ? `npm set ${key} ${value}` : `npm config delete ${key}`
+        value != null ? `npm set ${key} ${data}` : `npm config delete ${key}`
     );
-    console.info(`${key} = ${value}`);
+    console.info(`${key} = ${data}`);
 }

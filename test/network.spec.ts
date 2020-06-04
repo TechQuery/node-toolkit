@@ -15,10 +15,13 @@ describe('Network utility', () => {
     //  * @test {request}
     //  */
     // it('HTTP(S) request', async () => {
-    //     expect(await request('https://github.com')).toMatch(/<\w+>/);
-
+    //     expect(await readStream(await request('https://github.com'))).toMatch(
+    //         /<\w+>/
+    //     );
     //     expect(
-    //         typeof (await request('https://api.github.com')) === 'object'
+    //         typeof (await readStream(
+    //             await request('https://api.github.com')
+    //         )) === 'object'
     //     ).toBeTruthy();
     // });
 });

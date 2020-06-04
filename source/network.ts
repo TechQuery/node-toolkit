@@ -1,6 +1,6 @@
 import { Readable } from 'stream';
 import { Url, parse } from 'url';
-import { IncomingMessage } from 'http';
+import { request as requestHTTP, IncomingMessage } from 'http';
 
 export async function readStream(
     source: Readable
@@ -20,12 +20,12 @@ export async function readStream(
  * HTTP(S) request
  */
 export async function request(
-    URL: string | URL | Url,
+    URI: string | URL | Url,
     method = 'GET',
     header?: Record<string, any>,
     body?: string | Record<string, any> | Buffer
 ) {
-    if (typeof URL === 'string') URL = parse(URL);
+    if (typeof URI === 'string') URI = parse(URI);
 
     const option = {
             method,
@@ -37,7 +37,8 @@ export async function request(
                 header
             )
         },
-        client = (await import(URL.protocol.slice(0, -1))).request;
+        client = (await import(URI.protocol.slice(0, -1)))
+            .request as typeof requestHTTP;
 
     if (body instanceof Object && !(body instanceof Buffer)) {
         option.headers['Content-Type'] = 'application/json';
@@ -45,12 +46,10 @@ export async function request(
         body = JSON.stringify(body);
     }
 
-    for (const key in URL)
-        if (URL[key] && !(URL[key] instanceof Function)) option[key] = URL[key];
+    for (const key in URI)
+        if (URI[key] && !(URI[key] instanceof Function)) option[key] = URI[key];
 
-    return readStream(
-        await new Promise<IncomingMessage>((resolve, reject) =>
-            client(option, resolve).on('error', reject).end(body)
-        )
+    return new Promise<IncomingMessage>((resolve, reject) =>
+        client(option, resolve).on('error', reject).end(body)
     );
 }
