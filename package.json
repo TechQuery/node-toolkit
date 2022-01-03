@@ -38,8 +38,9 @@
         "preset": "ts-jest"
     },
     "scripts": {
+        "prepare": "husky install",
         "test": "lint-staged  &&  jest",
-        "build": "rm -rf dist/ docs/  &&  tsc  &&  typedoc",
+        "build": "rm -rf dist/ docs/  &&  tsc  &&  typedoc source/",
         "prepublishOnly": "npm test  &&  npm run build",
         "start": "typedoc  &&  open-cli docs/index.html"
     },

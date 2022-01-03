@@ -3,7 +3,7 @@
 Toolkit for [Node.JS packages](https://docs.npmjs.com/getting-started/packages)
 
 [![NPM Dependency](https://david-dm.org/TechQuery/node-toolkit.svg)][1]
-[![CI & CD](https://github.com/TechQuery/fs-match/workflows/CI%20&%20CD/badge.svg)][2]
+[![CI & CD](https://github.com/TechQuery/node-toolkit/workflows/CI%20&%20CD/badge.svg)][2]
 
 [![NPM](https://nodei.co/npm/@tech_query/node-toolkit.png?downloads=true&downloadRank=true&stars=true)][3]
 
