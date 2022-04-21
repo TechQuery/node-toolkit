@@ -17,3 +17,4 @@ export * from './module';
 export * from './file';
 export * from './network';
 export * from './console';
+export * from './asset';

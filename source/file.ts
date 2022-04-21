@@ -38,7 +38,7 @@ export async function toDataURI(path: string) {
 const DataURI_pattern = /^data:(.+?\/(.+?))?(;base64)?,(\S+)/;
 /**
  * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs
- * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_Types)
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_Types
  */
 export async function blobFrom(DataURI: string) {
     const [MIME, extension, base64, raw] = (

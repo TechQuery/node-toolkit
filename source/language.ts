@@ -28,11 +28,11 @@ export function prettify(source: string) {
 }
 
 /**
- * @param {string}  code         - ES 6+ source code
- * @param {?string} fileName     - Full name of this JS file
- * @param {boolean} [onlyModule] - Only transform ES 6 module to CommonJS
+ * @param code       ES 6+ source code
+ * @param fileName   Full name of this JS file
+ * @param onlyModule Only transform ES 6 module to CommonJS
  *
- * @return {string} ES 5 source code
+ * @return ES 5 source code
  */
 export function toES_5(code: string, fileName?: string, onlyModule?: boolean) {
     const option: TransformOptions = {
@@ -47,7 +47,6 @@ export function toES_5(code: string, fileName?: string, onlyModule?: boolean) {
                 'objectRestSpread',
                 'asyncGenerators',
                 'classProperties',
-                // @ts-ignore
                 ['decorators', { decoratorsBeforeExport: true }],
                 'importMeta',
                 'dynamicImport',
@@ -92,10 +91,10 @@ export function uglify(source: string, fileName: string) {
 /**
  * wrap Function with result cache
  */
-export function cache(func: Function) {
+export function cache<T extends (...data: any[]) => any>(func: T) {
     const result = new Map();
 
-    return function (...parameter: any[]) {
+    return function (...parameter) {
         for (const [input, output] of result)
             try {
                 deepStrictEqual(input, parameter);
@@ -108,7 +107,7 @@ export function cache(func: Function) {
         result.set(parameter, output);
 
         return output;
-    };
+    } as T;
 }
 
 export function hasItem<T>(list: ArrayLike<T>, value: T) {

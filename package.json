@@ -1,6 +1,6 @@
 {
     "name": "@tech_query/node-toolkit",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "Toolkit for Node.JS packages",
     "keywords": [
         "toolkit",
@@ -22,7 +22,7 @@
         "url": "https://github.com/TechQuery/node-toolkit/issues"
     },
     "main": "dist/index.js",
-    "module": "source/index.ts",
+    "source": "source/index.ts",
     "types": "dist/index.d.ts",
     "prettier": {
         "singleQuote": true,
@@ -45,42 +45,45 @@
         "start": "typedoc  &&  open-cli docs/index.html"
     },
     "dependencies": {
-        "@babel/core": "^7.16.7",
+        "@babel/core": "^7.17.9",
         "cross-spawn": "^7.0.3",
         "file-type": "^16.5.3",
-        "fs-extra": "^10.0.0",
+        "fs-extra": "^10.1.0",
+        "marked": "^4.0.14",
         "mime": "^3.0.0",
-        "prettier": "^2.5.1",
-        "uglify-js": "^3.14.5",
-        "yaml": "^1.10.2"
+        "prettier": "^2.6.2",
+        "prismjs": "^1.28.0",
+        "uglify-js": "^3.15.4",
+        "yaml": "^2.0.1"
     },
     "peerDependencies": {
         "@babel/plugin-transform-modules-commonjs": "^7.0.0",
         "@babel/preset-env": "^7.0.0"
     },
     "devDependencies": {
-        "@babel/plugin-transform-modules-commonjs": "^7.16.7",
-        "@babel/plugin-transform-runtime": "^7.16.7",
-        "@babel/preset-env": "^7.16.7",
-        "@types/babel__core": "^7.1.18",
+        "@babel/plugin-transform-modules-commonjs": "^7.17.9",
+        "@babel/plugin-transform-runtime": "^7.17.0",
+        "@babel/preset-env": "^7.16.11",
+        "@types/babel__core": "^7.1.19",
         "@types/cross-spawn": "^6.0.2",
         "@types/fs-extra": "^9.0.13",
-        "@types/jest": "^27.4.0",
+        "@types/jest": "^27.4.1",
+        "@types/marked": "^4.0.3",
         "@types/mime": "^2.0.3",
-        "@types/prettier": "^2.4.2",
-        "@types/uglify-js": "^3.13.1",
-        "@types/yaml": "^1.9.7",
-        "@typescript-eslint/eslint-plugin": "^5.8.1",
-        "@typescript-eslint/parser": "^5.8.1",
-        "eslint": "^8.6.0",
-        "eslint-config-prettier": "^8.3.0",
+        "@types/prettier": "^2.6.0",
+        "@types/prismjs": "^1.26.0",
+        "@types/uglify-js": "^3.13.2",
+        "@typescript-eslint/eslint-plugin": "^5.20.0",
+        "@typescript-eslint/parser": "^5.20.0",
+        "eslint": "^8.13.0",
+        "eslint-config-prettier": "^8.5.0",
         "husky": "^7.0.4",
-        "jest": "^27.4.5",
-        "lint-staged": "^12.1.5",
+        "jest": "^27.5.1",
+        "lint-staged": "^12.4.0",
         "open-cli": "^7.0.1",
-        "ts-jest": "^27.1.2",
-        "typedoc": "^0.22.10",
-        "typescript": "^4.5.4"
+        "ts-jest": "^27.1.4",
+        "typedoc": "^0.22.15",
+        "typescript": "^4.6.3"
     },
     "test": {
         "env": {
