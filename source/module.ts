@@ -38,9 +38,10 @@ export function currentModulePath() {
     }
 }
 
-export function packageOf(
-    path = './'
-): { path: string; meta: Record<string, any> } {
+export function packageOf(path = './'): {
+    path: string;
+    meta: Record<string, any>;
+} {
     for (const file of findUp(path))
         if (basename(file) === 'package.json')
             return {
@@ -88,6 +89,9 @@ export function getNPMConfig(
         }
 }
 
+/**
+ * @see {@link https://github.blog/changelog/2022-10-24-npm-v9-0-0-released/#:~:text=npm%20config%20set%20will%20no%20longer%20accept%20deprecated%20or%20invalid%20config%20options}
+ */
 export function setNPMConfig(key: string, value: any) {
     const data = JSON.stringify(value);
 

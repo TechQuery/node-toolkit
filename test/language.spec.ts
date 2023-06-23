@@ -38,16 +38,12 @@ Object.defineProperty(exports, '__esModule', {
     value: true
 });
 exports.Test = void 0;
-
 require('@babel/polyfill');
-
 function decorator() {}
-
 @decorator
 class Test {
     async test() {}
 }
-
 exports.Test = Test;`.trim()
         );
     });

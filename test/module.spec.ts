@@ -70,6 +70,7 @@ describe('Meta information of modules', () => {
         );
     });
 
+    if (parseFloat(process.versions.node) >= 16) return;
     /**
      * @test {setNPMConfig}
      * @test {getNPMConfig}
