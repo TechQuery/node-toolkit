@@ -1,10 +1,8 @@
-import { marked } from 'marked';
-
-import { makeMarkdownTable } from '../source/asset';
+import { makeMarkdownTable, marked } from '../source/asset';
 
 describe('Asset files', () => {
     it('should parse Markdown files with Code Highlight', () => {
-        const code = marked(
+        const code = marked.parse(
             `
 \`\`\`html
 <html></html>
@@ -13,8 +11,7 @@ describe('Asset files', () => {
         );
         expect(code).toBe(
             `<pre><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
-</code></pre>
-`
+</code></pre>`
         );
     });
 

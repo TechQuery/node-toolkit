@@ -33,8 +33,8 @@ export function currentModulePath() {
     } catch (error) {
         return (error as Error).stack
             ?.split(/[\r\n]+/)[2]
-            .match(/at .+?\((.+):\d+:\d+\)/)[1]
-            .replace(/\\/g, '/');
+            ?.match(/at (.+?\()?(.+):\d+:\d+\)?$/)?.[2]
+            ?.replace(/\\/g, '/');
     }
 }
 
