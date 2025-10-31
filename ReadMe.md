@@ -41,8 +41,9 @@ Some tools in v1 have been replaced by modern standards or packages:
 3. ECMAScript compiler & minifier:
    1. https://www.typescriptlang.org/
    2. https://parceljs.org/
-4. Command Line executor: https://google.github.io/zx/
-5. HTTP request & stream: https://github.com/EasyWebApp/KoAJAX
+4. HTTP request & stream: https://github.com/EasyWebApp/KoAJAX
+5. [WinterCG API][4] based tools: https://github.com/EasyWebApp/web-utility
+6. Command Line executor: https://google.github.io/zx/
 
 ## Typical cases
 
@@ -51,3 +52,4 @@ https://www.npmjs.com/package/@tech_query/node-toolkit?activeTab=dependents
 [1]: https://libraries.io/npm/@tech_query/node-toolkit
 [2]: https://github.com/TechQuery/node-toolkit/actions/workflows/main.yml
 [3]: https://www.npmjs.com/package/@tech_query/node-toolkit
+[4]: https://min-common-api.proposal.wintertc.org/
