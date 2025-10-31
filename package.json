@@ -25,7 +25,7 @@
     "source": "source/index.ts",
     "types": "dist/index.d.ts",
     "lint-staged": {
-        "*.{md,json,yml,ts}": "biome check --write"
+        "*.{json,yml,ts}": "biome check --write"
     },
     "jest": {
         "preset": "ts-jest"
