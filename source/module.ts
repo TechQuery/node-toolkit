@@ -24,7 +24,7 @@ export function patternOf(map: Record<string, string>) {
 
     for (const pattern in map) patternMap[map[pattern]] = toRegExp(pattern);
 
-    for (const key in patternMap) return patternMap;
+    for (const _key in patternMap) return patternMap;
 }
 
 export function currentModulePath() {

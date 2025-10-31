@@ -17,14 +17,15 @@ export function toRegExp(raw: string) {
     if (source) return new RegExp(source, flag);
 }
 
-export function prettify(source: string) {
-    return format(source, {
+export async function prettify(source: string) {
+    const code = await format(source, {
         parser: 'babel',
         singleQuote: true,
         trailingComma: 'none',
         arrowParens: 'avoid',
         tabWidth: 4
-    }).trim();
+    });
+    return code.trim();
 }
 
 /**

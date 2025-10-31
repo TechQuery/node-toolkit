@@ -15,9 +15,9 @@ describe('JS language utility', () => {
     /**
      * @test {toES_5}
      */
-    it('Transform ES 6+ module', () => {
+    it('Transform ES 6+ module', async () => {
         expect(
-            toES_5(
+            await toES_5(
                 `
 import '@babel/polyfill';
 

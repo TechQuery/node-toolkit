@@ -1,5 +1,4 @@
-.editorconfig
-.eslintrc.json
+biome.json
 test/
 docs/
 .github/
