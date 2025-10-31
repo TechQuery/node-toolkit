@@ -1,4 +1,4 @@
-import { toRegExp, toES_5, cache, patch } from '../source/language';
+import { toRegExp, cache, patch } from '../source/language';
 
 describe('JS language utility', () => {
     /**
@@ -10,42 +10,6 @@ describe('JS language utility', () => {
         expect(toRegExp('/^test$/')).toEqual(/^test$/);
 
         expect(toRegExp('test')).toEqual(/test/);
-    });
-
-    /**
-     * @test {toES_5}
-     */
-    it('Transform ES 6+ module', async () => {
-        expect(
-            await toES_5(
-                `
-import '@babel/polyfill';
-
-function decorator() { }
-
-@decorator
-export class Test {
-    async test() { }
-}
-`,
-                null,
-                true
-            )
-        ).toBe(
-            `
-
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
-exports.Test = void 0;
-require('@babel/polyfill');
-function decorator() {}
-@decorator
-class Test {
-    async test() {}
-}
-exports.Test = Test;`.trim()
-        );
     });
 
     /**
