@@ -1,6 +1,6 @@
 {
     "name": "@tech_query/node-toolkit",
-    "version": "2.0.0-alpha.0",
+    "version": "2.0.0-beta.0",
     "description": "Toolkit for Node.JS packages",
     "keywords": [
         "toolkit",
@@ -24,15 +24,8 @@
     "main": "dist/index.js",
     "source": "source/index.ts",
     "types": "dist/index.d.ts",
-    "prettier": {
-        "singleQuote": true,
-        "trailingComma": "none",
-        "arrowParens": "avoid",
-        "tabWidth": 4
-    },
     "lint-staged": {
-        "*.{md,json,yml,ts}": "prettier --write",
-        "*.ts": "eslint --fix"
+        "*.{json,yml,ts}": "biome check --write"
     },
     "jest": {
         "preset": "ts-jest"
@@ -45,48 +38,25 @@
         "start": "typedoc  &&  open-cli docs/index.html"
     },
     "dependencies": {
-        "@babel/core": "^7.25.8",
-        "cross-spawn": "^7.0.3",
         "file-type": "^16.5.4",
-        "fs-extra": "^11.2.0",
-        "marked": "^14.1.2",
-        "marked-highlight": "^2.1.4",
+        "fs-extra": "^11.3.2",
         "mime": "^3.0.0",
-        "prettier": "^2.8.8",
-        "prismjs": "^1.29.0",
-        "uglify-js": "^3.19.3",
-        "yaml": "^2.6.0"
-    },
-    "peerDependencies": {
-        "@babel/plugin-transform-modules-commonjs": "^7",
-        "@babel/preset-env": "^7",
-        "@types/node": ">=18"
+        "yaml": "^2.8.1"
     },
     "devDependencies": {
-        "@babel/plugin-transform-modules-commonjs": "^7.25.7",
-        "@babel/plugin-transform-runtime": "^7.25.7",
-        "@babel/preset-env": "^7.25.8",
-        "@types/babel__core": "^7.20.5",
-        "@types/cross-spawn": "^6.0.6",
+        "@biomejs/biome": "2.3.2",
         "@types/fs-extra": "^11.0.4",
-        "@types/jest": "^29.5.13",
+        "@types/jest": "^29.5.14",
         "@types/mime": "^3.0.4",
-        "@types/node": "^20.16.11",
-        "@types/prettier": "^2.7.3",
-        "@types/prismjs": "^1.26.4",
-        "@types/uglify-js": "^3.17.5",
-        "@typescript-eslint/eslint-plugin": "^8.8.1",
-        "@typescript-eslint/parser": "^8.8.1",
-        "eslint": "^8.57.1",
-        "eslint-config-prettier": "^9.1.0",
-        "husky": "^9.1.6",
+        "@types/node": "^22.18.13",
+        "husky": "^9.1.7",
         "jest": "^29.7.0",
-        "lint-staged": "^15.2.10",
+        "lint-staged": "^16.2.6",
         "open-cli": "^8.0.0",
-        "ts-jest": "^29.2.5",
-        "typedoc": "^0.26.9",
-        "typedoc-plugin-mdn-links": "^3.3.3",
-        "typescript": "~5.6.3"
+        "ts-jest": "^29.4.5",
+        "typedoc": "^0.28.14",
+        "typedoc-plugin-mdn-links": "^5.0.10",
+        "typescript": "~5.9.3"
     },
     "test": {
         "env": {
