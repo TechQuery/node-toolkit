@@ -1,5 +1,11 @@
 import { resolve, basename, dirname } from 'path';
-import { readJSONSync, existsSync, readFileSync, outputFile } from 'fs-extra';
+import {
+    readJSONSync,
+    existsSync,
+    readFileSync,
+    outputFile,
+    ensureFile
+} from 'fs-extra';
 import { parseEnv } from 'util';
 import { parse } from 'yaml';
 
@@ -81,8 +87,16 @@ export const stringifyEnv = (data: Record<string, unknown>) =>
         .map(([key, value]) => `${key}=${JSON.stringify(value)}`)
         .join('\n');
 
-export function saveEnv(newData: Record<string, unknown>, filePath: string) {
-    const oldData = parseEnv(readFileSync(filePath) + '');
+export async function saveEnv(
+    newData: Record<string, unknown>,
+    filePath: string
+) {
+    await ensureFile(filePath);
 
-    return outputFile(filePath, stringifyEnv({ ...oldData, ...newData }));
+    const oldData = parseEnv(readFileSync(filePath) + '');
+    newData = { ...oldData, ...newData };
+
+    await outputFile(filePath, stringifyEnv(newData));
+
+    return newData;
 }

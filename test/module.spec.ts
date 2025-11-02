@@ -1,11 +1,12 @@
 import { join } from 'path';
-import { readJSONSync } from 'fs-extra';
+import { outputFile, readFile, readJSON } from 'fs-extra';
 import {
     packageNameOf,
     configOf,
     patternOf,
     currentModulePath,
     stringifyEnv,
+    saveEnv,
     packageOf
 } from '../source/module';
 
@@ -58,15 +59,13 @@ describe('Meta information of modules', () => {
     /**
      * @test {packageOf}
      */
-    it('Get root path of this package', () => {
-        const path = currentModulePath();
-
-        expect(packageOf(path)).toEqual(
-            expect.objectContaining({
+    it('Get root path of this package', async () => {
+        const path = currentModulePath(),
+            expectedData = {
                 path: join(path, '../../').slice(0, -1),
-                meta: readJSONSync('./package.json')
-            })
-        );
+                meta: await readJSON('./package.json')
+            };
+        expect(packageOf(path)).toEqual(expect.objectContaining(expectedData));
     });
 
     if (parseFloat(process.versions.node) >= 16) return;
@@ -83,6 +82,23 @@ describe('Meta information of modules', () => {
 
             expect(result).toBe(`test_example="sample"
 nested=${JSON.stringify({ key: 'value' })}`);
+        });
+
+        it('should update existing keys in a `.env` file', async () => {
+            await outputFile(
+                '.env.test',
+                `TEST_KEY="old_value"
+ANOTHER_KEY=123`
+            );
+            const data = { TEST_KEY: 'new_value', NEW_KEY: 'added_value' };
+
+            await saveEnv(data, '.env.test');
+
+            const content = (await readFile('.env.test')) + '';
+
+            expect(content).toBe(`TEST_KEY="new_value"
+ANOTHER_KEY=123
+NEW_KEY="added_value"`);
         });
     });
 });

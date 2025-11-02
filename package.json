@@ -1,6 +1,6 @@
 {
     "name": "@tech_query/node-toolkit",
-    "version": "2.0.0-beta.2",
+    "version": "2.0.0-beta.3",
     "license": "LGPL-3.0",
     "author": "shiy2008@gmail.com",
     "description": "Toolkit for Node.JS packages",
