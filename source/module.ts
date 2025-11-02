@@ -1,7 +1,6 @@
 import { resolve, basename, dirname } from 'path';
 import { readJSONSync, existsSync, readFileSync } from 'fs-extra';
 import { parse } from 'yaml';
-import { execSync } from 'child_process';
 
 import { toRegExp } from './language';
 import { findUp } from './file';
@@ -76,27 +75,7 @@ export function configOf(name: string): Record<string, any> {
     return config?.env?.[process.env.NODE_ENV] || config;
 }
 
-export function getNPMConfig(
-    key: string
-): string | Record<string, any> | undefined {
-    const value = (execSync(`npm get ${key}`) + '').trim();
-
-    if (value !== 'undefined')
-        try {
-            return JSON.parse(value);
-        } catch {
-            return value;
-        }
-}
-
-/**
- * @see {@link https://github.blog/changelog/2022-10-24-npm-v9-0-0-released/#:~:text=npm%20config%20set%20will%20no%20longer%20accept%20deprecated%20or%20invalid%20config%20options}
- */
-export function setNPMConfig(key: string, value: any) {
-    const data = JSON.stringify(value);
-
-    execSync(
-        value != null ? `npm set ${key} ${data}` : `npm config delete ${key}`
-    );
-    console.info(`${key} = ${data}`);
-}
+export const stringifyEnv = (data: Record<string, unknown>) =>
+    Object.entries(data)
+        .map(([key, value]) => `${key}=${JSON.stringify(value)}`)
+        .join('\n');

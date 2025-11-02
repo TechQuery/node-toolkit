@@ -5,8 +5,7 @@ import {
     configOf,
     patternOf,
     currentModulePath,
-    setNPMConfig,
-    getNPMConfig,
+    stringifyEnv,
     packageOf
 } from '../source/module';
 
@@ -72,26 +71,18 @@ describe('Meta information of modules', () => {
 
     if (parseFloat(process.versions.node) >= 16) return;
     /**
-     * @test {setNPMConfig}
-     * @test {getNPMConfig}
+     * @test {stringifyEnv}
      */
-    describe('Get or set NPM config', () => {
-        it('String value', () => {
-            setNPMConfig('test_example', 'sample');
+    describe('Dot Env files', () => {
+        it('should stringify an Object to a `.env` String', () => {
+            const data = {
+                test_example: 'sample',
+                nested: { key: 'value' }
+            };
+            const result = stringifyEnv(data);
 
-            expect(getNPMConfig('test_example')).toBe('sample');
-        });
-
-        it('Boolean value', () => {
-            setNPMConfig('test_example', true);
-
-            expect(getNPMConfig('test_example')).toBeTruthy();
-        });
-
-        it('Clean value', () => {
-            setNPMConfig('test_example', null);
-
-            expect(getNPMConfig('test_example')).toBeUndefined();
+            expect(result).toBe(`test_example="sample"
+nested=${JSON.stringify({ key: 'value' })}`);
         });
     });
 });

@@ -9,10 +9,10 @@ Toolkit for [Node.JS packages](https://docs.npmjs.com/getting-started/packages)
 
 ## Versions
 
-| SemVer |    status    | Node.js |
-| :----: | :----------: | :-----: |
-| `>=2`  | ✅developing | `>=16`  |
-|  `<2`  | ❌deprecated |  `>=6`  |
+| SemVer |    status    |  Node.js  |
+| :----: | :----------: | :-------: |
+| `>=2`  | ✅developing | `>=20.12` |
+|  `<2`  | ❌deprecated |   `>=6`   |
 
 ## Basic usage
 

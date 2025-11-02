@@ -1,6 +1,8 @@
 {
     "name": "@tech_query/node-toolkit",
-    "version": "2.0.0-beta.0",
+    "version": "2.0.0-beta.1",
+    "license": "LGPL-3.0",
+    "author": "shiy2008@gmail.com",
     "description": "Toolkit for Node.JS packages",
     "keywords": [
         "toolkit",
@@ -11,8 +13,6 @@
         "library",
         "module"
     ],
-    "author": "shiy2008@gmail.com",
-    "license": "LGPL-3.0",
     "homepage": "https://tech-query.me/node-toolkit/",
     "repository": {
         "type": "git",
@@ -21,22 +21,12 @@
     "bugs": {
         "url": "https://github.com/TechQuery/node-toolkit/issues"
     },
+    "engines": {
+        "node": ">=20"
+    },
     "main": "dist/index.js",
     "source": "source/index.ts",
     "types": "dist/index.d.ts",
-    "lint-staged": {
-        "*.{json,yml,ts}": "biome check --write"
-    },
-    "jest": {
-        "preset": "ts-jest"
-    },
-    "scripts": {
-        "prepare": "husky",
-        "test": "lint-staged  &&  jest",
-        "build": "rm -rf dist/ docs/  &&  tsc  &&  typedoc source/",
-        "prepublishOnly": "npm test  &&  npm run build",
-        "start": "typedoc  &&  open-cli docs/index.html"
-    },
     "dependencies": {
         "file-type": "^16.5.4",
         "fs-extra": "^11.3.2",
@@ -57,6 +47,19 @@
         "typedoc": "^0.28.14",
         "typedoc-plugin-mdn-links": "^5.0.10",
         "typescript": "~5.9.3"
+    },
+    "lint-staged": {
+        "*.{json,yml,ts}": "biome check --write"
+    },
+    "jest": {
+        "preset": "ts-jest"
+    },
+    "scripts": {
+        "prepare": "husky",
+        "test": "lint-staged  &&  jest",
+        "build": "rm -rf dist/ docs/  &&  tsc  &&  typedoc source/",
+        "prepublishOnly": "npm test  &&  npm run build",
+        "start": "typedoc  &&  open-cli docs/index.html"
     },
     "test": {
         "env": {
