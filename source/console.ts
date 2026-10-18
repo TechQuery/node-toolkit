@@ -3,7 +3,7 @@ let index = 0;
 export function step<T>(
     title: string,
     logic: (index: number, title: string, end: boolean) => T,
-    reset?: boolean
+    reset = false
 ): T {
     title = ` ${++index}. ${title}`;
 

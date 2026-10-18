@@ -28,7 +28,11 @@ export function packageNameOf(path: string) {
 export function patternOf(map: Record<string, string>) {
     const patternMap: Record<string, RegExp> = {};
 
-    for (const pattern in map) patternMap[map[pattern]] = toRegExp(pattern);
+    for (const pattern in map) {
+        const expression = toRegExp(pattern);
+
+        if (expression) patternMap[map[pattern]] = expression;
+    }
 
     for (const _key in patternMap) return patternMap;
 }
@@ -44,10 +48,9 @@ export function currentModulePath() {
     }
 }
 
-export function packageOf(path = './'): {
-    path: string;
-    meta: Record<string, any>;
-} {
+export function packageOf(
+    path = './'
+): { path: string; meta: Record<string, any> } | undefined {
     for (const file of findUp(path))
         if (basename(file) === 'package.json')
             return {
@@ -79,7 +82,7 @@ export function configOf(name: string): Record<string, any> {
                 break;
             }
 
-    return config?.env?.[process.env.NODE_ENV] || config;
+    return config?.env?.[process.env.NODE_ENV || ''] || config;
 }
 
 export const stringifyEnv = (data: Record<string, unknown>) =>

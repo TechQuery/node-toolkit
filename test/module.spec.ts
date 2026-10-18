@@ -1,3 +1,6 @@
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
+
 import { join } from 'path';
 import { outputFile, readFile, readJSON } from 'fs-extra';
 import {
@@ -20,7 +23,7 @@ describe('Meta information of modules', () => {
         );
     });
 
-    let config;
+    let config: ReturnType<typeof configOf> = {};
     /**
      * @test {configOf}
      */
@@ -51,26 +54,32 @@ describe('Meta information of modules', () => {
      * @test {currentModulePath}
      */
     it('Get path of current module', () => {
-        expect(currentModulePath()).toMatch(
-            /^(\w:)?\/.+\/test\/module\.spec\.ts$/
-        );
+        const path = currentModulePath();
+
+        if (!path) throw new Error('Could not determine current module path');
+
+        expect(path).toMatch(/^(\w:)?\/.+\/test\/module\.spec\.ts$/);
     });
 
     /**
      * @test {packageOf}
      */
     it('Get root path of this package', async () => {
-        const path = currentModulePath(),
-            expectedData = {
-                path: join(path, '../../').slice(0, -1),
-                meta: await readJSON('./package.json')
-            };
+        const path = currentModulePath();
+
+        if (!path) throw new Error('Could not determine current module path');
+
+        const expectedData = {
+            path: join(path, '../../').slice(0, -1),
+            meta: await readJSON('./package.json')
+        };
         expect(packageOf(path)).toEqual(expect.objectContaining(expectedData));
     });
 
     if (parseFloat(process.versions.node) >= 16) return;
     /**
      * @test {stringifyEnv}
+     * @test {saveEnv}
      */
     describe('Dot Env files', () => {
         it('should stringify an Object to a `.env` String', () => {

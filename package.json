@@ -1,6 +1,6 @@
 {
     "name": "@tech_query/node-toolkit",
-    "version": "2.0.0-beta.3",
+    "version": "2.0.0-rc.0",
     "license": "LGPL-3.0",
     "author": "shiy2008@gmail.com",
     "description": "Toolkit for Node.JS packages",
@@ -22,41 +22,37 @@
         "url": "https://github.com/TechQuery/node-toolkit/issues"
     },
     "engines": {
-        "node": ">=20"
+        "node": ">=22.12.0"
     },
     "main": "dist/index.js",
     "source": "source/index.ts",
     "types": "dist/index.d.ts",
     "dependencies": {
-        "file-type": "^16.5.4",
-        "fs-extra": "^11.3.2",
-        "mime": "^3.0.0",
-        "yaml": "^2.8.1"
+        "file-type": "^22.2.0",
+        "fs-extra": "^11.4.1",
+        "mime": "^4.1.1",
+        "yaml": "^2.9.1"
     },
     "devDependencies": {
-        "@biomejs/biome": "2.3.2",
+        "@biomejs/biome": "2.5.15",
         "@types/fs-extra": "^11.0.4",
-        "@types/jest": "^29.5.14",
-        "@types/mime": "^3.0.4",
-        "@types/node": "^22.18.13",
+        "@types/mime": "^4.0.0",
+        "@types/node": "^22.20.5",
+        "expect": "^30.5.2",
         "husky": "^9.1.7",
-        "jest": "^29.7.0",
-        "lint-staged": "^16.2.6",
-        "open-cli": "^8.0.0",
-        "ts-jest": "^29.4.5",
-        "typedoc": "^0.28.14",
-        "typedoc-plugin-mdn-links": "^5.0.10",
-        "typescript": "~5.9.3"
+        "lint-staged": "^17.6.0",
+        "open-cli": "^9.0.0",
+        "tsx": "^4.23.15",
+        "typedoc": "^0.28.20",
+        "typedoc-plugin-mdn-links": "^5.1.1",
+        "typescript": "~6.0.3"
     },
     "lint-staged": {
         "*.{json,yml,ts}": "biome check --write"
     },
-    "jest": {
-        "preset": "ts-jest"
-    },
     "scripts": {
         "prepare": "husky",
-        "test": "lint-staged  &&  jest",
+        "test": "lint-staged  &&  tsx --test \"test/**/*.spec.ts\"",
         "build": "rm -rf dist/ docs/  &&  tsc  &&  typedoc source/",
         "prepublishOnly": "npm test  &&  npm run build",
         "start": "typedoc  &&  open-cli docs/index.html"

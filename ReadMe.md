@@ -11,7 +11,7 @@ Toolkit for [Node.JS packages](https://docs.npmjs.com/getting-started/packages)
 
 | SemVer |    status    |  Node.js  |
 | :----: | :----------: | :-------: |
-| `>=2`  | ✅developing | `>=20.12` |
+| `>=2`  | ✅developing | `>=22.12` |
 |  `<2`  | ❌deprecated |   `>=6`   |
 
 ## Basic usage
