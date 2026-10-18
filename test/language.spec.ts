@@ -1,3 +1,6 @@
+import { describe, it, mock } from 'node:test';
+import { expect } from 'expect';
+
 import { toRegExp, cache, patch } from '../source/language';
 
 describe('JS language utility', () => {
@@ -16,7 +19,7 @@ describe('JS language utility', () => {
      * @test {cache}
      */
     it('Cache function result', () => {
-        const test = jest.fn(example => example);
+        const test = mock.fn(example => example);
 
         const _test_ = cache(test);
 
@@ -26,7 +29,7 @@ describe('JS language utility', () => {
 
         expect(_test_(1)).toBe(1);
 
-        expect(test).toBeCalledTimes(2);
+        expect(test.mock.callCount()).toBe(2);
     });
 
     /**

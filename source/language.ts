@@ -11,9 +11,12 @@ export function toRegExp(raw: string) {
  * wrap Function with result cache
  */
 export function cache<T extends (...data: any[]) => any>(func: T) {
-    const result = new Map();
+    const result = new Map<Parameters<T>, ReturnType<T>>();
 
-    return function (...parameter) {
+    return function (
+        this: ThisParameterType<T>,
+        ...parameter: Parameters<T>
+    ): ReturnType<T> {
         for (const [input, output] of result)
             try {
                 deepStrictEqual(input, parameter);
@@ -45,18 +48,29 @@ export type Patchable<T> = Record<string, T> | ArrayLike<T>;
  */
 export function patch<T>(target: Patchable<T>, ...mixin: Patchable<T>[]) {
     for (const source of mixin)
-        if (typeof target.length === 'number')
+        if (typeof (target as ArrayLike<T>).length === 'number') {
+            const arrayTarget = target as {
+                length: number;
+                [index: number]: T;
+            };
             Array.from(
                 source as ArrayLike<T>,
                 value =>
-                    hasItem(target as ArrayLike<T>, value) ||
-                    (target[target.length as number] = value)
+                    hasItem(arrayTarget, value) ||
+                    (arrayTarget[arrayTarget.length] = value)
             );
-        else if (typeof target === 'object') {
-            for (const key in source)
-                if (!(key in target)) target[key] = source[key];
-                else if (typeof target[key] === 'object')
-                    patch(target[key], source[key]);
+        } else if (typeof target === 'object') {
+            const objectTarget = target as Record<string, T>;
+            const objectSource = source as Record<string, T>;
+
+            for (const key in objectSource)
+                if (!(key in objectTarget))
+                    objectTarget[key] = objectSource[key];
+                else if (typeof objectTarget[key] === 'object')
+                    patch(
+                        objectTarget[key] as Patchable<T>,
+                        objectSource[key] as Patchable<T>
+                    );
         }
     return target;
 }

@@ -1,3 +1,6 @@
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
+
 import { basename, dirname, join } from 'path';
 import { readFileSync } from 'fs';
 
@@ -11,10 +14,19 @@ describe('File system', () => {
     it('Find files upward', () => {
         const current = currentModulePath();
 
-        for (var file of findUp(current))
-            if (basename(file) === 'package.json') break;
+        if (!current)
+            throw new Error('Could not determine current module path');
 
-        expect(dirname(join(current, '../'))).toBe(dirname(file));
+        let packageFile: string | undefined;
+
+        for (const file of findUp(current))
+            if (basename(file) === 'package.json') {
+                packageFile = file;
+                break;
+            }
+        if (!packageFile) throw new Error('Could not find package.json');
+
+        expect(dirname(join(current, '../'))).toBe(dirname(packageFile));
     });
 
     /**

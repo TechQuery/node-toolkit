@@ -1,3 +1,6 @@
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
+
 import { makeMarkdownTable } from '../source/asset';
 
 describe('Asset files', () => {
